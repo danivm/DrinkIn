@@ -1,12 +1,12 @@
-function getCategories(db, req, res) {
+function getDishes(db, req, res) {
 	const { skip, limit, projection } = req
 	db.collection("categories")
 		.find()
 		.toArray()
 		.then(categories => {
-			res.render('categories', { categories })
+			res.render('dishes', { categories })
 		})
 		.catch( err => console.log(err) )
 }
 
-module.exports = getCategories;
+module.exports = getDishes;

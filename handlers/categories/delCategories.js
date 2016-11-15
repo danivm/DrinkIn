@@ -1,13 +1,13 @@
-function getCategories(db, req, res) {
+const ObjectID = require('mongodb').ObjectID
+
+function delCategories(db, req, res) {
 	const { skip, limit, projection } = req
+
+	const id = req.params.id;
+
 	db.collection("categories")
-		.find()
-		.toArray()
-		.then(categories => {
-			console.log('log 1')
-			res.render('categories', { categories })
-		})
-		.catch( err => console.log(err) )
+		.remove( { _id: ObjectID(id) })
+		.then(res.sendStatus(200))
 }
 
-module.exports = getCategories;
+module.exports = delCategories;

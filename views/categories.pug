@@ -8,10 +8,11 @@ block content
         form(action='/categories', method='POST', role='form')
             .form-group
               label(for='') Name
-              input.form-control(type='text', name='desc', autofocus, placeholder='Add new category...')
+              input.form-control(type='text', name='name', autofocus, placeholder='Add new category...')
             button.btn.btn-primary(type='submit') Add
         .jumbotron
           ul#categories.list-group
             each category,index in categories
-              li.list-group-item(data-index=category._id)=category.desc
+              li.list-group-item(data-index=category._id)=category.name
                 a(class="delete", href="#") delete
+

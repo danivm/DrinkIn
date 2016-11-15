@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  .container.theme-showcase(role='main')
+
+    .row
+      .col-md-4
+        h1 Add Dish
+        form(action='/dishes', method='POST', role='form')
+            .form-group
+              label(for='category') Category
+              select.form-control(name='category' id='category' autofocus)
+                each category in categories
+                  option(value=category._id)=category.name
+              label(for='name') Name
+              input.form-control(type='text' name='name' id='name' placeholder='Add new dish...')
+              label(for='price') Price
+              div.input-group
+                input.form-control(type='number' step='0.10' value='0.00' placeholder='0.00' name='price' id='price')
+                div.input-group-addon €
+            button.btn.btn-primary(type='submit') Add
+      .col-md-8
+        table.table.table-hover
+          thead
+            tr
+              th='Name'
+              th='Price'
+              th='Options'
+          tbody.dishes
+            each category in categories
+              tr.info
+                td
+                  strong=category.name
+                td
+                td
+              each dish in category.dishes
+                tr(data-id=dish._id)
+                  td=dish.name
+                  td=dish.price
+                  td
+                    a(class="delete", href="#") delete
+          //- each category in categories
+          //-   h2=category.name
+          //-   ul#categories.list-group
+          //-     each dish in category.dishes
+          //-       li.list-group-item(data-index=dish.id)=dish.name
+          //-         span(class="label label-default")=dish.price 
+          //-         a(class="delete", href="#") delete
+
+
