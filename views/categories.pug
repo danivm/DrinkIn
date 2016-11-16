@@ -1,18 +1,26 @@
 extends layout
 
 block content
-  .container.theme-showcase(role='main')
-    h1 Categories
-    .row
-      .col-md-6.col-offset-3
-        form(action='/categories', method='POST', role='form')
-            .form-group
-              label(for='') Name
-              input.form-control(type='text', name='name', autofocus, placeholder='Add new category...')
-            button.btn.btn-primary(type='submit') Add
-        .jumbotron
-          ul#categories.list-group
-            each category,index in categories
-              li.list-group-item(data-index=category._id)=category.name
-                a(class="delete", href="#") delete
+	.container.theme-showcase(role='main')
+		h1 Categories
+		.row
+			.col-md-6
+				form(action='/categories', method='POST', role='form')
+						.form-group
+							label(for='') Name
+							input.form-control(type='text', name='name', autofocus, placeholder='Add new category...')
+						button.btn.btn-primary(type='submit') Add
+			.col-md-6
+				table.table.table-hover
+					thead
+						tr
+							th='Name'
+							th='Options'
+					tbody.categories
+						each category in categories
+							tr(data-id=category._id)
+								td=category.name
+								td
+									div.btn-group.btn-group-xs(role="group")
+										button.btn.btn-danger.delete(type="button")='Delete'
 

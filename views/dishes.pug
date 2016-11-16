@@ -38,13 +38,8 @@ block content
                   td=dish.name
                   td=dish.price
                   td
-                    a(class="delete", href="#") delete
-          //- each category in categories
-          //-   h2=category.name
-          //-   ul#categories.list-group
-          //-     each dish in category.dishes
-          //-       li.list-group-item(data-index=dish.id)=dish.name
-          //-         span(class="label label-default")=dish.price 
-          //-         a(class="delete", href="#") delete
+                    div.btn-group.btn-group-xs(role="group")
+                      button.btn.btn-default.edit(type="button")='Edit'
+                      button.btn.btn-danger.delete(type="button")='Delete'
 
 
