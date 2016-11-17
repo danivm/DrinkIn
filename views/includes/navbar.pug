@@ -6,10 +6,14 @@ nav.navbar.navbar-inverse
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(href='#') DrinkIn
+      a.navbar-brand(href='/') DrinkIn
     #navbar.navbar-collapse.collapse
       ul.nav.navbar-nav
         li( class=(title === 'Categories' ? 'active' : '') )
-          a(href='/categories') Categories
+          a(href='/admin/categories') Categories
+        li(class=(title === 'Allergens' ? 'active' : '') )
+          a(href='/admin/allergens') Allergens
         li(class=(title === 'Dishes' ? 'active' : '') )
-          a(href='/dishes') Dishes
+          a(href='/admin/dishes') Dishes
+        li(class=(title === 'Menu' ? 'active' : '') )
+          a(href='/#/menu') Menu

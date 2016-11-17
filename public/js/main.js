@@ -12,6 +12,20 @@ $('.categories td .delete').on('click', function(event) {
 	})
 });
 
+$('.allergens td .delete').on('click', function(event) {
+	event.preventDefault();
+	let $currentElem = $(this).parent().parent().parent();
+	const id = $currentElem.attr('data-id')
+
+	$.ajax({
+		url: '/allergens/' + id,
+		type: 'DELETE'
+	})
+	.done(function() {
+		$currentElem.remove();
+	})
+});
+
 $('.dishes td .delete').on('click', function(event) {
 	event.preventDefault();
 	let $currentElem = $(this).parent().parent().parent();
@@ -39,13 +53,14 @@ $('#update-dish').on('submit', function(event) {
 	name = name.value;
 	price = price.value;
 	description = description.value;
-
+	allergens = [].filter.call( this.allergens, ( elem ) => elem.checked  ).map( elem => elem.value )
+	sAllergens = allergens.toString()
 	event.preventDefault();
 
 	$.ajax({
 		url: '/dishes/edit',
 		type: 'PUT',
-		data: { name, price, description, id }
+		data: { name, price, description, id, sAllergens }
 	})
 	.done(function() {
 		window.location.href = "/dishes"

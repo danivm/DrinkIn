@@ -10,9 +10,9 @@ block content
 		.container
 			.row
 				form.form-grup(id="update-dish", role='form')
-					input(type="hidden", name="id", value=id)
+					input(type="hidden", name="id", value=dish._id)
 					.form-group
-						.col-md-8
+						.col-md-4
 							.row
 								.col-md-8
 									label.control-label(for='name') Name:
@@ -23,7 +23,16 @@ block content
 								.col-md-12
 									label.control-label(for='description') Description:
 									textarea.form-control(id='description', name='description', rows='8', cols='100')=dish.description
-
+						.col-md-4
+							label Allergens:
+							each allergen in allergens
+								.checkbox
+									label
+										if dish.allergens.includes(allergen.name)
+											input(type="checkbox" name="allergens" checked=true value=allergen.name)
+										else
+											input(type="checkbox" name="allergens" value=allergen.name)
+										| #{allergen.name}
 						.col-md-4
 							label.control-label(for='input') Image:
 							#photo-container

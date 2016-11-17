@@ -1,0 +1,25 @@
+extends layout
+
+block content
+	.container.theme-showcase(role='main')
+		h1 Allergens
+		.row
+			.col-md-6
+				form(action='/allergens', method='POST', role='form')
+						.form-group
+							label(for='') Name
+							input.form-control(type='text', name='name', autofocus, placeholder='Add new category...')
+						button.btn.btn-primary(type='submit') Add
+			.col-md-6
+				table.table.table-hover
+					thead
+						tr
+							th='Name'
+							th='Options'
+					tbody.allergens
+						each allergen in allergens
+							tr(data-id=allergen._id)
+								td=allergen.name
+								td
+									div.btn-group.btn-group-xs(role="group")
+										button.btn.btn-danger.delete(type="button")='Delete'

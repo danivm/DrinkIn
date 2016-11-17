@@ -2,16 +2,15 @@ const ObjectID = require('mongodb').ObjectID
 
 function putEditDish(db, req, res) {
 	const { skip, limit, projection } = req
-	const { id, name, price, description } = req.body
+	const { id, name, price, description, sAllergens } = req.body
+	const allergens = sAllergens.split(',')
 
 	function updateDish(idDish, name, price, description){
-		console.log(idDish)
-		console.log(description)
 		return db.collection("dishes")
 					.update(
 						{ _id: ObjectID(idDish) },
 						{
-							$set: {name, price, description}
+							$set: {name, price, description, allergens}
 						}
 					)
 					.then( () => idDish )
@@ -22,10 +21,7 @@ function putEditDish(db, req, res) {
 					.toArray()
 					.then((oDish)=>oDish[0])
 	}
-	function updateDishInCategory( oDish ) {
-		console.log(oDish.name)
-		console.log(oDish.price)
-		
+	function updateDishInCategory( oDish ) {	
 		return db.collection("categories")
 					.update(
 						{ 
