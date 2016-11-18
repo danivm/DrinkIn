@@ -33,13 +33,13 @@ block content
 										else
 											input(type="checkbox" name="allergens" value=allergen.name)
 										| #{allergen.name}
-						.col-md-4
-							label.control-label(for='input') Image:
-							#photo-container
-								img#photoPreview(src='/img/beer.jpg')
-							br
-							input#fileRoute(type='file', ng-model='image')
-							#progress-container
+						//- .col-md-4
+						//- 	label.control-label(for='input') Image:
+						//- 	#photo-container
+						//- 		img#photoPreview(src='/img/beer.jpg' width="200")
+						//- 	br
+						//- 	input#fileRoute(type='file', ng-model='image')
+						//- 	#progress-container
 						.col-md-12
 							button.btn.btn-default.cancel(type='submit') Cancel
 							button.btn.btn-primary.update(type='submit') Update

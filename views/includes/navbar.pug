@@ -9,11 +9,11 @@ nav.navbar.navbar-inverse
       a.navbar-brand(href='/') DrinkIn
     #navbar.navbar-collapse.collapse
       ul.nav.navbar-nav
+        li(class=(title === 'Menu' ? 'active' : '') )
+          a(href='/#/menu') Menu
+        li(class=(title === 'Dishes' ? 'active' : '') )
+          a(href='/admin/dishes') Dishes
         li( class=(title === 'Categories' ? 'active' : '') )
           a(href='/admin/categories') Categories
         li(class=(title === 'Allergens' ? 'active' : '') )
           a(href='/admin/allergens') Allergens
-        li(class=(title === 'Dishes' ? 'active' : '') )
-          a(href='/admin/dishes') Dishes
-        li(class=(title === 'Menu' ? 'active' : '') )
-          a(href='/#/menu') Menu

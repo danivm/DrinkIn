@@ -1,14 +1,16 @@
 doctype html
 html(lang='en')
-  head
-    title DrinkIn
-    link(rel="stylesheet", href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
-    link(rel="stylesheet", href='/css/main.css')
+	head
+		title DrinkIn
+		link(rel="stylesheet", href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+		link(rel="stylesheet", href='/css/bootstrap.paper.min.css')
+		link(rel="stylesheet", href='/css/main.css')
 
-  body
-    include ./includes/navbar.pug
+	body
+		include ./includes/navbar.pug
 
-    block content
+		block content
 
-    script(type='text/javascript',src='https://code.jquery.com/jquery-2.0.3.min.js').
-    script(type='text/javascript',src='/js/main.js').
+		script(type='text/javascript',src='https://code.jquery.com/jquery-2.0.3.min.js')
+		script(type='text/javascript',src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+		script(type='text/javascript',src='/js/main.js')

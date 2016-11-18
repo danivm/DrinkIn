@@ -6,7 +6,7 @@ block content
     .row
       .col-md-4
         h1 Add Dish
-        form(action='/dishes', method='POST', role='form')
+        form(action='/admin/dishes', method='POST', role='form')
             .form-group
               label(for='category') Category
               select.form-control(name='category' id='category' autofocus)
@@ -28,7 +28,7 @@ block content
               th='Options'
           tbody.dishes
             each category in categories
-              tr.info
+              tr.active
                 td
                   strong=category.name
                 td

@@ -4,7 +4,7 @@ $('.categories td .delete').on('click', function(event) {
 	const id = $currentElem.attr('data-id')
 
 	$.ajax({
-		url: '/categories/' + id,
+		url: '/admin/categories/' + id,
 		type: 'DELETE'
 	})
 	.done(function() {
@@ -18,7 +18,7 @@ $('.allergens td .delete').on('click', function(event) {
 	const id = $currentElem.attr('data-id')
 
 	$.ajax({
-		url: '/allergens/' + id,
+		url: '/admin/allergens/' + id,
 		type: 'DELETE'
 	})
 	.done(function() {
@@ -31,7 +31,7 @@ $('.dishes td .delete').on('click', function(event) {
 	let $currentElem = $(this).parent().parent().parent();
 	const id = $currentElem.attr('data-id')
 	$.ajax({
-		url: '/dishes/' + id,
+		url: '/admin/dishes/' + id,
 		type: 'DELETE'
 	})
 	.done(function() {
@@ -41,10 +41,10 @@ $('.dishes td .delete').on('click', function(event) {
 $('.dishes td .edit').on('click', function(event) {
 	let $currentElem = $(this).parent().parent().parent();
 	const id = $currentElem.attr('data-id')
-	window.location.href = "/dishes/edit/"+id
+	window.location.href = "/admin/dishes/edit/"+id
 });
 $('#update-dish .cancel').on('click', function(){
-	window.location.href = "/dishes"
+	window.location.href = "/admin/dishes"
 })
 $('#update-dish').on('submit', function(event) {
 
@@ -58,12 +58,12 @@ $('#update-dish').on('submit', function(event) {
 	event.preventDefault();
 
 	$.ajax({
-		url: '/dishes/edit',
+		url: '/admin/dishes/edit',
 		type: 'PUT',
 		data: { name, price, description, id, sAllergens }
 	})
 	.done(function() {
-		window.location.href = "/dishes"
+		window.location.href = "/admin/dishes"
 	})
 
 });

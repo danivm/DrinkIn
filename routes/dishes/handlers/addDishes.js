@@ -16,7 +16,11 @@ function addDishes(db, req, res) {
 					{ _id: ObjectID(idCategory) },
 					{ 
 						$push: {
-							dishes: { _id: oDish._id, name: oDish.name, price: oDish.price }
+							dishes: { 
+								_id: oDish._id, 
+								name: oDish.name, 
+								price: oDish.price 
+							}
 		     			}
 					}
 				)
@@ -24,7 +28,7 @@ function addDishes(db, req, res) {
 
 	insertDish(newDish)
 		.then( updateDishInCategory.bind(null, idCat) )
-		.then( () => res.redirect('/dishes') )
+		.then( () => res.redirect('/admin/dishes') )
 		.catch( err => new Error('something failed inserting data...'))
 
 
