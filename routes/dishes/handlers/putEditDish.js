@@ -36,6 +36,7 @@ function putEditDish(db, req, res) {
 							$set : { 
 								"dishes.$.name" : oDish.name,
 								"dishes.$.price" : oDish.price,
+								"dishes.$.allergens" : oDish.allergens
 							}
 						}
 					)

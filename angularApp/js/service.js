@@ -11,3 +11,11 @@ angular.module('myServices', [])
 			getAllergens: getAllergens
 		}
 	})
+	.factory('dishService', function($http){
+		function getDish(id){
+			return $http.get("/api/dish/"+id);
+		}
+		return {
+			getDish: getDish
+		}
+	})

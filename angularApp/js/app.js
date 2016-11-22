@@ -1,4 +1,4 @@
-angular.module("myApp",['ngRoute', 'myControllers','ui.bootstrap']) 
+angular.module("myApp",['ngRoute', 'myControllers','ui.bootstrap', 'ngAnimate']) 
 	.config( function($routeProvider) {
 		$routeProvider
 		.when('/', {
@@ -8,6 +8,10 @@ angular.module("myApp",['ngRoute', 'myControllers','ui.bootstrap'])
 		.when('/menu',{
 			templateUrl: 'views/menu.html',
 			controller: 'menuController'
+		})
+		.when('/dish/:dishId', {
+			templateUrl: 'views/dish.html',
+			controller: 'dishController'
 		})
 		.otherwise({redirectTo: '/'});
 	})

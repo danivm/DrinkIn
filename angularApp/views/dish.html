@@ -1,0 +1,16 @@
+<h1> {{dishInfo.name}}</h1>
+<div class="col-md-9">
+	<h3>Price</h3>
+	<p> {{dishInfo.price }} </p>
+	<h3>Description</h3>
+	<p> {{dishInfo.description }} </p>
+	<h3>Allergens</h3>
+	<ul>
+		<li ng-repeat="allergen in dishInfo.allergens">
+			{{ allergen }}
+		</li>
+	</ul>
+	<button class="btn btn-primary" ng-click="close()">
+		Close
+	</button>
+</div>
