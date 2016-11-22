@@ -4,6 +4,8 @@ const addDishes = require('./handlers/addDishes')
 const delDishes = require('./handlers/delDishes')
 const getEditDish = require('./handlers/getEditDish')
 const putEditDish = require('./handlers/putEditDish')
+const toggleInfoDish = require('./handlers/toggleInfoDish')
+const toggleStockDish = require('./handlers/toggleStockDish')
 
 const router = express.Router();
 
@@ -15,6 +17,9 @@ function getRouter(db) {
 
 	router.get('/edit/:id', getEditDish.bind(null, db) )
 	router.put('/edit', putEditDish.bind(null, db) )
+
+	router.put('/toggleinfo', toggleInfoDish.bind(null, db))
+	router.put('/togglestock', toggleStockDish.bind(null, db))
 	
 	return router;
 }

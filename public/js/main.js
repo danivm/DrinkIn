@@ -43,6 +43,59 @@ $('.dishes td .edit').on('click', function(event) {
 	const id = $currentElem.attr('data-id')
 	window.location.href = "/admin/dishes/edit/"+id
 });
+
+$('.dishes td .info').on('click', function(event) {
+	let $currentElem = $(this).parent().parent();
+	const id = $currentElem.attr('data-id')
+
+	let $currentSpan = $(this).children()
+	let toggle = true;
+	if ($currentSpan.hasClass('glyphicon-eye-open')) {
+		toggle = false
+	} 
+	$.ajax({
+		url: '/admin/dishes/toggleinfo',
+		type: 'PUT',
+		data: { id, toggle }
+	})
+	.done(function() {
+		if (toggle==true) {
+			$currentSpan.removeClass('glyphicon-eye-close')
+			$currentSpan.addClass('glyphicon-eye-open')
+		} else {
+			$currentSpan.removeClass('glyphicon-eye-open')
+			$currentSpan.addClass('glyphicon-eye-close')
+		}
+	})
+});
+
+$('.dishes td .stock').on('click', function(event) {
+	let $currentElem = $(this).parent().parent();
+	const id = $currentElem.attr('data-id')
+
+	let $currentSpan = $(this).children()
+	let toggle = true;
+	if ($currentSpan.hasClass('glyphicon-ok')) {
+		toggle = false
+	} 
+	$.ajax({
+		url: '/admin/dishes/togglestock',
+		type: 'PUT',
+		data: { id, toggle }
+	})
+	.done(function() {
+		if (toggle==true) {
+			$currentSpan.removeClass('glyphicon-remove')
+			$currentSpan.addClass('glyphicon-ok')
+		} else {
+			$currentSpan.removeClass('glyphicon-ok')
+			$currentSpan.addClass('glyphicon-remove')
+		}
+	})
+});
+
+
+
 $('#update-dish .cancel').on('click', function(){
 	window.location.href = "/admin/dishes"
 })

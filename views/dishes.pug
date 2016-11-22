@@ -25,7 +25,9 @@ block content
             tr
               th='Name'
               th='Price'
-              th='Options'
+              th='Info'
+              th='Stock'
+              th='Admin'
           tbody.dishes
             each category in categories
               tr.active
@@ -33,10 +35,24 @@ block content
                   strong=category.name
                 td
                 td
+                td
+                td
               each dish in category.dishes
                 tr(data-id=dish._id)
                   td=dish.name
                   td=dish.price
+                  td
+                    button.btn.btn-default.btn-xs.info(type="button")
+                      if (dish.info==="true")
+                        span.glyphicon.glyphicon-eye-open
+                      else
+                        span.glyphicon.glyphicon-eye-close
+                  td
+                    button.btn.btn-default.btn-xs.stock(type="button")
+                      if (dish.stock==="true")
+                        span.glyphicon.glyphicon-ok
+                      else
+                        span.glyphicon.glyphicon-remove
                   td
                     div.btn-group.btn-group-xs(role="group")
                       button.btn.btn-default.edit(type="button")='Edit'

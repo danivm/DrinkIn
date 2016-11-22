@@ -5,3 +5,6 @@
 .animate-show.ng-hide {
   opacity: 0;
 }
+.outstock {
+	text-decoration: line-through
+}

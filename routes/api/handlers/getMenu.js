@@ -1,6 +1,5 @@
 function getMenu(db, req, res) {
 	const { skip, limit, projection } = req
-	console.log('log getMenu')
 	db.collection("categories")
 		.find()
 		.toArray()

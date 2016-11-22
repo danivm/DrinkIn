@@ -34,11 +34,11 @@
 				<td></td>
 				<td></td>
 			</tr>
-			<tr ng-repeat="dish in category.dishes | filter: { name : queryName} | filter: containAllergens">
+			<tr ng-repeat="dish in category.dishes | filter: { name : queryName} | filter: containAllergens" ng-class="{outstock: !{{ dish.stock }} }">
 				<td>{{ dish.name }}</td>
 				<td>{{ dish.price }}</td>
 				<td>
-					<button class="btn btn-default btn-sm" type="button" ng-click="showDish(dish._id)">
+					<button class="btn btn-default btn-sm" type="button" ng-click="showDish(dish._id)" ng-show="{{ dish.info }}">
 						<span class="glyphicon glyphicon-eye-open" aria-hidden="true">
 						</span>
 					</button>
