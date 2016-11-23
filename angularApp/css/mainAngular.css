@@ -8,3 +8,8 @@
 .outstock {
 	text-decoration: line-through
 }
+.dish-info h6 {
+	color: #DDA828;
+	font-weight: 700;
+    font-size: 16px;
+}

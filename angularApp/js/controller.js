@@ -49,6 +49,7 @@ angular.module('myControllers', ['myServices'])
 		$rootScope.activetab = 'home';
 	})
 	.controller('dishController', function($scope, $rootScope, dishService, $location, $routeParams ) {
+		$rootScope.collapsed = true;
 		dishService.getDish($routeParams.dishId)
 			.then( function(response) {
 				$scope.dishInfo = response.data
