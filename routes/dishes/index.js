@@ -9,7 +9,7 @@ const putEditDish = require('./handlers/putEditDish')
 const toggleInfoDish = require('./handlers/toggleInfoDish')
 const toggleStockDish = require('./handlers/toggleStockDish')
 
-router.get('/', getDishes)
+router.get('/', isAuthenticated, getDishes)
 router.post('/', addDishes)
 router.delete('/:id', delDishes)
 
@@ -18,6 +18,15 @@ router.put('/edit', putEditDish)
 
 router.put('/toggleinfo', toggleInfoDish)
 router.put('/togglestock', toggleStockDish)
+
+function isAuthenticated(req, res, next) {
+  if ( req.isAuthenticated() ) {
+  	debugger;
+  	return next();
+  }
+  debugger;
+  res.redirect('/local/login');
+}
 
 module.exports = router;
 

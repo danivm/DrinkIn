@@ -1,6 +1,10 @@
 const express = require('express')
 const bodyparser = require('body-parser')
 const passport = require('passport')
+const LocalStrategy = require('passport-local').Strategy;
+const session = require('express-session')
+const cookieParser = require('cookie-parser');
+
 const db = require('./db');
 const app = express()
 const PORT = 3000;
@@ -22,10 +26,20 @@ app.use( '/admin/allergens', routerAllergens )
 app.use( '/admin/dishes', routerDishes )
 app.use( '/api', routerApi )
 
+app.use( cookieParser() );
+app.use( session({ secret: 'drinkin12345'}) );
+
 app.use( passport.initialize() );
 app.use( passport.session() );
 
-const routerAuthGoogle = require('./routes/auth/social/google')
-app.use('/auth/google', routerAuthGoogle)
+/* @begin LOCAL */
+var Account = require('./models/account');
+passport.use( new LocalStrategy( Account.authenticate() ) );
+passport.serializeUser( Account.serializeUser() );
+passport.deserializeUser( Account.deserializeUser() );
+
+const routerAuthLocal = require('./routes/auth/local')
+app.use('/local', routerAuthLocal)
+/* @end LOCAL */
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}...`) )

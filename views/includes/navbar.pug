@@ -20,3 +20,11 @@ nav.navbar.navbar-inverse
           a(href='/admin/categories') Categories
         li(class=(title === 'Allergens' ? 'active' : '') )
           a(href='/admin/allergens') Allergens
+        if (!user)
+          li(class=(title === 'SignUp' ? 'active' : '') )
+            a(href='/local/login') LogIn
+          li(class=(title === 'LogIn' ? 'active' : '') )
+            a(href='/local/register') SignUp
+        if (user)
+          li(class=(title === 'Logout' ? 'active' : '') )
+            a(href='/') Logout
