@@ -1,4 +1,6 @@
 const express = require('express');
+const router = express.Router();
+
 const getDishes = require('./handlers/getDishes')
 const addDishes = require('./handlers/addDishes')
 const delDishes = require('./handlers/delDishes')
@@ -7,21 +9,15 @@ const putEditDish = require('./handlers/putEditDish')
 const toggleInfoDish = require('./handlers/toggleInfoDish')
 const toggleStockDish = require('./handlers/toggleStockDish')
 
-const router = express.Router();
+router.get('/', getDishes)
+router.post('/', addDishes)
+router.delete('/:id', delDishes)
 
-function getRouter(db) {
+router.get('/edit/:id', getEditDish)
+router.put('/edit', putEditDish)
 
-	router.get('/', getDishes.bind(null, db) )
-	router.post('/', addDishes.bind(null, db) )
-	router.delete('/:id', delDishes.bind(null, db) )
+router.put('/toggleinfo', toggleInfoDish)
+router.put('/togglestock', toggleStockDish)
 
-	router.get('/edit/:id', getEditDish.bind(null, db) )
-	router.put('/edit', putEditDish.bind(null, db) )
+module.exports = router;
 
-	router.put('/toggleinfo', toggleInfoDish.bind(null, db))
-	router.put('/togglestock', toggleStockDish.bind(null, db))
-	
-	return router;
-}
-
-module.exports = getRouter;

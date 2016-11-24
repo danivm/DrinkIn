@@ -1,8 +1,9 @@
-function getMenu(db, req, res) {
-	const { skip, limit, projection } = req
-	db.collection("categories")
-		.find()
-		.toArray()
+const Category = require('../../../models/Category')
+
+function getMenu(req, res) {
+
+	Category.find()
+		.populate('dishes')
 		.then(data=>res.json(data))
 		.catch( err => console.log(err) )
 }

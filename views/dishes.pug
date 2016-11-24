@@ -16,7 +16,7 @@ block content
               input.form-control(type='text' name='name' id='name' placeholder='Add new dish...')
               label(for='price') Price
               div.input-group
-                input.form-control(type='number' step='0.10' value='0.00' placeholder='0.00' name='price' id='price')
+                input.form-control(type='number' step='0.01' value='0.00' placeholder='0.00' name='price' id='price')
                 div.input-group-addon €
             button.btn.btn-primary(type='submit') Add
       .col-md-8
@@ -43,13 +43,13 @@ block content
                   td=dish.price
                   td
                     button.btn.btn-default.btn-xs.info(type="button")
-                      if (dish.info==="true")
+                      if (dish.info===true)
                         span.glyphicon.glyphicon-eye-open
                       else
                         span.glyphicon.glyphicon-eye-close
                   td
                     button.btn.btn-default.btn-xs.stock(type="button")
-                      if (dish.stock==="true")
+                      if (dish.stock===true)
                         span.glyphicon.glyphicon-ok
                       else
                         span.glyphicon.glyphicon-remove

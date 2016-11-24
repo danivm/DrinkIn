@@ -1,17 +1,12 @@
 const express = require('express');
+const router = express.Router();
+
 const getMenu = require('./handlers/getMenu')
 const getAllergens = require('./handlers/getAllergens')
 const getDishInfo = require('./handlers/getDishInfo')
 
-const router = express.Router();
+router.get('/menu', getMenu )
+router.get('/allergens', getAllergens )
+router.get('/dish/:id', getDishInfo )
 
-function getRouter(db) {
-
-	router.get('/menu', getMenu.bind(null, db) )
-	router.get('/allergens', getAllergens.bind(null, db) )
-	router.get('/dish/:id', getDishInfo.bind(null, db))
-
-	return router;
-}
-
-module.exports = getRouter;
+module.exports = router;

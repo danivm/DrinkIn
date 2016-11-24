@@ -1,39 +1,25 @@
-const ObjectID = require('mongodb').ObjectID
+const Dish = require('../../../models/Dish')
+const Category = require('../../../models/Category')
 
-function delDishes(db, req, res) {
-	const { skip, limit, projection } = req
-	const id = req.params.id;
+function delDishes(req, res) {
+	console.log(req.params.id);
 
-	function getDish(idDish){
-		console.log('log getDish OK!')
-		return db.collection("dishes")
-					.find({ _id: ObjectID(idDish) })
-					.toArray()
-					.then( (oDish) => oDish[0] )
-	}
 	function updateDishInCategory( oDish ) {
-		console.log(oDish)
-		return db.collection("categories")
-				.update( 
-					{ _id: ObjectID(oDish.category) },
-					{ 
-						$pull: {
-							dishes: { _id: oDish._id }
-		     			}
-					}
-				)
-				.then( () => oDish )
+		const idCategory = oDish.category
+		return Category.findByIdAndUpdate( idCategory, {
+			$pull: { dishes: oDish._id }
+		})  
 	}
-	function deleteDish( oDish ) {
-		console.log(oDish._id)
-		return db.collection("dishes")
-					.remove( { _id: ObjectID(oDish._id) })		
-					.then( () => oDish )
+
+	function deleteDish( id ) {
+		return Dish.findByIdAndRemove(id)
+					.then( oDish => oDish )
+					.catch( console.log )
 	}
-	getDish(id)
+
+	deleteDish(req.params.id)
 		.then( updateDishInCategory )
-		.then( deleteDish )
-		.then(res.sendStatus(200))
+		.then( res.sendStatus(200) )
 		.catch( err => new Error('something failed inserting data...'))
 }
 

@@ -1,7 +1,13 @@
-function addAllergens(db, req, res) {
-	var newAllergen = req.body;
-	db.collection("allergens").insert(newAllergen)
-	res.redirect('/admin/allergens');
+const Allergen = require('../../../models/Allergen')
+
+function addAllergens(req,res) {
+
+	var newAllergen = new Allergen(req.body);
+
+	newAllergen.save()
+		.then(res.redirect('/admin/allergens'))
+		.catch(console.log)
+
 }
 
 module.exports = addAllergens;

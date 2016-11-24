@@ -1,32 +1,19 @@
-const ObjectID = require('mongodb').ObjectID
+const Dish = require('../../../models/Dish')
+const Category = require('../../../models/Category')
 
-function addDishes(db, req, res) {
-	var newDish = req.body;
-	var idCat = newDish.category;
 
-	function insertDish( oDish ) {
-		return db.collection("dishes")
-					.insert(oDish)		
-					.then( () => oDish )
-	}
+function addDishes(req, res) {
+
+	const newDish = new Dish(req.body);
+	const idCat = newDish.category;
 
 	function updateDishInCategory( idCategory, oDish ) {
-		return db.collection("categories")
-				.update( 
-					{ _id: ObjectID(idCategory) },
-					{ 
-						$push: {
-							dishes: { 
-								_id: oDish._id, 
-								name: oDish.name, 
-								price: oDish.price 
-							}
-		     			}
-					}
-				)
+		return Category.findByIdAndUpdate( idCategory, {
+			$push: { dishes: oDish._id }
+		})  
 	}
 
-	insertDish(newDish)
+	newDish.save()
 		.then( updateDishInCategory.bind(null, idCat) )
 		.then( () => res.redirect('/admin/dishes') )
 		.catch( err => new Error('something failed inserting data...'))

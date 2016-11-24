@@ -1,13 +1,15 @@
-function getDishes(db, req, res) {
-	const { skip, limit, projection } = req
-	const title = 'Dishes'
-	db.collection("categories")
-		.find()
-		.toArray()
-		.then(categories => {
-			res.render('dishes', { categories, title })
+const Category = require('../../../models/Category')
+const title = 'Dishes'
+
+function getDishes(req,res) {
+
+	Category.find()
+		.populate('dishes')
+		.then( categories => {
+			res.render('dishes', { categories, title })	
 		})
-		.catch( err => console.log(err) )
+		.catch( console.log )
+
 }
 
 module.exports = getDishes;

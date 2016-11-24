@@ -1,13 +1,8 @@
-const ObjectID = require('mongodb').ObjectID
+const Dish = require('../../../models/Dish')
 
-function getDishInfo(db, req, res) {
-	const { skip, limit, projection } = req
-	const id = req.params.id;
+function getDishInfo(req, res) {
 
-	db.collection("dishes")
-		.find({ _id: ObjectID(id) })
-		.toArray()
-		.then(oDish=>oDish[0])
+	Dish.findById(req.params.id)
 		.then(data=>res.json(data))
 		.catch( err => console.log(err) )
 }

@@ -1,13 +1,14 @@
-function getAllergens(db, req, res) {
-	const { skip, limit, projection } = req
-	const title = 'Allergens'
-	db.collection("allergens")
-		.find()
-		.toArray()
-		.then(allergens => {
-			res.render('allergens', { allergens, title })
+const Allergen = require('../../../models/Allergen')
+const title = 'Allergens'
+
+function getAllergens(req,res) {
+
+	Allergen.find()
+		.then( allergens => {
+			res.render('allergens', { allergens, title })	
 		})
-		.catch( err => console.log(err) )
+		.catch( console.log )
+
 }
 
 module.exports = getAllergens;

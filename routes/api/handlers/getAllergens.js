@@ -1,10 +1,9 @@
-function getAllergens(db, req, res) {
-	const { skip, limit, projection } = req
+const Allergen = require('../../../models/Allergen')
 
-	db.collection("allergens")
-		.find()
-		.toArray()
-		.then(data=>res.json(data))
+function getAllergens(req, res) {
+
+	Allergen.find()
+		.then( data => res.json(data) )
 		.catch( err => console.log(err) )
 }
 

@@ -1,15 +1,9 @@
 const express = require('express')
 const bodyparser = require('body-parser')
-const MongoClient = require('mongodb').MongoClient
-const ObjectID = require('mongodb').ObjectID
+const passport = require('passport')
+const db = require('./db');
 const app = express()
 const PORT = 3000;
-const url = "mongodb://localhost:27017/drinkin"
-
-const getRouterCategories = require('./routes/categories');
-const getRouterDishes = require('./routes/dishes');
-const getRouterAllergens = require('./routes/allergens');
-const getRouterApi = require('./routes/api')
 
 app.set('view engine', 'pug')
 
@@ -18,21 +12,20 @@ app.use( express.static('angularApp') )
 
 app.use( bodyparser.urlencoded({ extended: false }) )
 
-MongoClient.connect(url, (err, db) => {
+const routerCategories = require('./routes/categories');
+const routerAllergens = require('./routes/allergens');
+const routerDishes = require('./routes/dishes');
+const routerApi = require('./routes/api')
 
-	if (err) throw err;
-	console.log("Connected to DB...")
+app.use( '/admin/categories', routerCategories )
+app.use( '/admin/allergens', routerAllergens )
+app.use( '/admin/dishes', routerDishes )
+app.use( '/api', routerApi )
 
-	// app.get('/', (req,res)=>res.render('index'))
-	app.use( '/admin/categories', getRouterCategories(db) )
-	app.use( '/admin/dishes', getRouterDishes(db) )
-	app.use( '/admin/allergens', getRouterAllergens(db) )
-	app.use( '/api', getRouterApi(db))
+app.use( passport.initialize() );
+app.use( passport.session() );
 
-//	/ => angular app 
-	// /admin => admin
-	// /api => json
-
-})
+const routerAuthGoogle = require('./routes/auth/social/google')
+app.use('/auth/google', routerAuthGoogle)
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}...`) )

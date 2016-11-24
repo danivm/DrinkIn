@@ -1,13 +1,14 @@
-function getCategories(db, req, res) {
-	const { skip, limit, projection } = req
-	const title='Categories'
-	db.collection("categories")
-		.find()
-		.toArray()
-		.then(categories => {
-			res.render('categories', { categories, title })
+const Category = require('../../../models/Category')
+const title = 'Categories'
+
+function getCategories(req,res) {
+
+	Category.find()
+		.then( categories => {
+			res.render('categories', { categories, title })	
 		})
-		.catch( err => console.log(err) )
+		.catch( console.log )
+
 }
 
 module.exports = getCategories;

@@ -1,13 +1,10 @@
-const ObjectID = require('mongodb').ObjectID
+const Category = require('../../../models/Category')
 
-function delCategories(db, req, res) {
-	const { skip, limit, projection } = req
+function delCategories(req,res) {
 
-	const id = req.params.id;
-
-	db.collection("categories")
-		.remove( { _id: ObjectID(id) })
-		.then(res.sendStatus(200))
+	Category.findByIdAndRemove(req.params.id)
+		.then( category => res.sendStatus(200) )
+		.catch( console.log )
 }
 
 module.exports = delCategories;
