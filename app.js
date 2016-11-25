@@ -9,22 +9,16 @@ const db = require('./db');
 const app = express()
 const PORT = 3000;
 
-app.set('view engine', 'pug')
-
-app.use( express.static('public') )
-app.use( express.static('angularApp') )
-
-app.use( bodyparser.urlencoded({ extended: false }) )
-
 const routerCategories = require('./routes/categories');
 const routerAllergens = require('./routes/allergens');
 const routerDishes = require('./routes/dishes');
 const routerApi = require('./routes/api')
 
-app.use( '/admin/categories', routerCategories )
-app.use( '/admin/allergens', routerAllergens )
-app.use( '/admin/dishes', routerDishes )
-app.use( '/api', routerApi )
+app.set('view engine', 'pug')
+
+app.use( express.static('public') )
+app.use( express.static('angularApp') )
+app.use( bodyparser.urlencoded({ extended: false }) )
 
 app.use( cookieParser() );
 app.use( session({ secret: 'drinkin12345'}) );
@@ -41,5 +35,10 @@ passport.deserializeUser( Account.deserializeUser() );
 const routerAuthLocal = require('./routes/auth/local')
 app.use('/local', routerAuthLocal)
 /* @end LOCAL */
+
+app.use( '/admin/categories', routerCategories )
+app.use( '/admin/allergens', routerAllergens )
+app.use( '/admin/dishes', routerDishes )
+app.use( '/api', routerApi )
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}...`) )
