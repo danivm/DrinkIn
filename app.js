@@ -33,7 +33,7 @@ passport.serializeUser( Account.serializeUser() );
 passport.deserializeUser( Account.deserializeUser() );
 
 const routerAuthLocal = require('./routes/auth/local')
-app.use('/local', routerAuthLocal)
+app.use('/', routerAuthLocal)
 /* @end LOCAL */
 
 app.use( '/admin/categories', routerCategories )

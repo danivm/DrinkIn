@@ -10,22 +10,20 @@ const toggleInfoDish = require('./handlers/toggleInfoDish')
 const toggleStockDish = require('./handlers/toggleStockDish')
 
 router.get('/', isAuthenticated, getDishes)
-router.post('/', addDishes)
-router.delete('/:id', delDishes)
+router.post('/', isAuthenticated)
+router.delete('/:id', isAuthenticated, delDishes)
 
-router.get('/edit/:id', getEditDish)
-router.put('/edit', putEditDish)
+router.get('/edit/:id', isAuthenticated, getEditDish)
+router.put('/edit', isAuthenticated, putEditDish)
 
-router.put('/toggleinfo', toggleInfoDish)
-router.put('/togglestock', toggleStockDish)
+router.put('/toggleinfo', isAuthenticated, toggleInfoDish)
+router.put('/togglestock', isAuthenticated, toggleStockDish)
 
 function isAuthenticated(req, res, next) {
   if ( req.isAuthenticated() ) {
-  	debugger;
   	return next();
   }
-  debugger;
-  res.redirect('/local/login');
+  res.redirect('/login');
 }
 
 module.exports = router;

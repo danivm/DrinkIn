@@ -5,7 +5,8 @@ function getAllergens(req,res) {
 
 	Allergen.find()
 		.then( allergens => {
-			res.render('allergens', { allergens, title })	
+			const user = req.user;
+			res.render('allergens', { user, allergens, title })	
 		})
 		.catch( console.log )
 

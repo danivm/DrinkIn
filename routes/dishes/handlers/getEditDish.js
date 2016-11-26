@@ -12,7 +12,8 @@ function getEditDishes(req, res) {
 	function getAllergens(dish){
 		return Allergen.find()
 					.then( (allergens) => {
-						res.render('dish-edit', { dish, allergens, title }) 
+						const user = req.user;
+						res.render('dish-edit', { user, dish, allergens, title }) 
 					})
 	}
 

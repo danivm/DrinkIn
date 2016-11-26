@@ -5,7 +5,8 @@ function getCategories(req,res) {
 
 	Category.find()
 		.then( categories => {
-			res.render('categories', { categories, title })	
+			const user = req.user;
+			res.render('categories', { user, categories, title })	
 		})
 		.catch( console.log )
 
