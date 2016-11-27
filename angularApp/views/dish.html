@@ -1,34 +1,36 @@
-<div class="row dish-info">
-	<div class="col-md-6">
-		<div class="col-md-6 ">	
-			<h6>Name:</h6>
-			<p>{{ dishInfo.name }}</p>
+<div class="container">
+	<div class="row dish-info">
+		<div class="col-md-6">
+			<div class="col-md-6 ">	
+				<h6>Name:</h6>
+				<p>{{ dishInfo.name }}</p>
+			</div>
+			<div class="col-md-6">	
+				<h6>Price:</h6>
+				<p>{{ dishInfo.price }}</p>
+			</div>	
+			<div class="col-md-12">	
+				<h6>Descripción:</h6>
+				<p>{{ dishInfo.description }}</p>
+			</div>	
 		</div>
-		<div class="col-md-6">	
-			<h6>Price:</h6>
-			<p>{{ dishInfo.price }}</p>
+		<div class="col-md-3">
+			<div class="col-md-12">
+				<h6>Allergens:</h6>
+				<ul>
+					<li ng-repeat="allergen in dishInfo.allergens">
+						{{ allergen }}
+					</li>
+				</ul>
+			</div>	
+			
 		</div>	
-		<div class="col-md-12">	
-			<h6>Descripción:</h6>
-			<p>{{ dishInfo.description }}</p>
-		</div>	
-	</div>
-	<div class="col-md-3">
 		<div class="col-md-12">
-			<h6>Allergens:</h6>
-			<ul>
-				<li ng-repeat="allergen in dishInfo.allergens">
-					{{ allergen }}
-				</li>
-			</ul>
-		</div>	
-		
-	</div>	
-	<div class="col-md-12">
-		<div class="col-md-12">
-			<button class="btn btn-primary" ng-click="close()">
-				Close
-			</button>			
+			<div class="col-md-12">
+				<button class="btn btn-primary" ng-click="close()">
+					Close
+				</button>			
+			</div>
 		</div>
 	</div>
 </div>

@@ -2,21 +2,33 @@
 .jumbotron { margin-top: 30px;}
 .navbar {
 	margin: 0;
-	margin-bottom: 10px;
 }
 .drinkin-color {
 	color: #DDA828;
+	transition: 0.5s;
 }
 
 .navbar-inverse {
 	background: #111;
+	border-radius: 0;
 }
+
 .navbar-inverse .navbar-brand {
 	color: white;
 	font-weight: 700;
+	transition: 0.5s;
 }
 .navbar-inverse .navbar-nav>li>a {
     color: white;
+}
+
+.navbar-inverse .navbar-header a:hover {
+    color: #DDA828;
+    transition: 0.5s;
+}
+.navbar-inverse .navbar-header a:hover .drinkin-color {
+    color: white;
+    transition: 0.5s;
 }
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
     color: #DDA828;
@@ -30,4 +42,12 @@
 .btn-primary:hover, .btn-primary:active:hover, .btn-primary:focus {
     background-color: #DDA828;
     outline: none;
+}
+.login-container {
+	margin: 70px auto;
+	width: 200px;
+	text-align: center;
+}
+.login-container form {
+	width: 100%
 }

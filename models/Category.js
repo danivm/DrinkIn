@@ -6,9 +6,13 @@ const collection = 'categories';
 const categorySchema = mongoose.Schema({
 	name: String,
 	dishes: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Dish'
-    }]
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Dish'
+	}],
+	account: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Account'
+	}
 },
 { collection });
 

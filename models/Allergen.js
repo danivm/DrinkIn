@@ -4,7 +4,11 @@ const collection = 'allergens';
 
 // Schema definition
 const allergenSchema = mongoose.Schema({
-	name: String
+	name: String,
+	account: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Account'
+	}
 },
 { collection });
 

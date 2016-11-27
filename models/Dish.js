@@ -13,7 +13,11 @@ const dishSchema = mongoose.Schema({
 	category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category'
-    }
+    },
+    account: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Account'
+	}
 },
 { collection });
 

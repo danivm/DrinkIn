@@ -4,7 +4,9 @@ const Category = require('../../../models/Category')
 
 function addDishes(req, res) {
 
-	const newDish = new Dish(req.body);
+	let newDish = new Dish(req.body);
+	newDish.account = req.user._id
+	
 	const idCat = newDish.category;
 
 	function updateDishInCategory( idCategory, oDish ) {

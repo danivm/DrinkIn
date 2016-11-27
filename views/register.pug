@@ -1,15 +1,15 @@
 extends layout
 
 block content
-  .container
-    h1 Register Page
-    p.lead Say something worthwhile here.
+  .login-container
+    h2 Register
+    p.lead Welcome to DrinkIn!
     br
     form(role='form', action="/register",method="post", style='max-width: 300px;')
       .form-group
           input.form-control(type='text', name="username", placeholder='Enter Username')
       .form-group
         input.form-control(type='password', name="password", placeholder='Password')
-      button.btn.btn-default(type='submit') SignUp
-      a(href='/')
-        button.btn.btn-primary(type="button") Cancel
+      button.btn.btn-primary(type='submit') SignUp
+      a(href='/login')
+        button.btn.btn-default(type="button") LogIn

@@ -1,49 +1,61 @@
-<div class="col-md-3">
-	<div class="form-group">
-		<label for="">Category</label>
-<!-- 		<input ng-model="queryCategory" type="text" class="form-control" id="" placeholder="Filter by category..."> -->
-		<select name="category" id="category" class="form-control" ng-model="queryCategory">
-			<option value="">All</option>
-			<option value="{{ category.name }}" ng-repeat="category in menu">
-				{{ category.name }}
-			</option>
-		</select>
-
-
-		<br>
-		<label for="">Dish</label>
-		<input ng-model="queryName" type="text" class="form-control" id="" placeholder="Filter by name...">
-		<br>	
-		<button class="btn btn-primary" ng-click="showAllergens = !showAllergens">Allergens</button>
-		<div ng-show="showAllergens" class="animate-show">
-			<div class="checkbox" ng-repeat="allergen in allergens">
-				<label>
-					<input type="checkbox" name="allergens" ng-model="allergen.on" value="{{allergen.name}}">
-					{{allergen.name}}
-				</label>
-			</div>	
-		</div>
-
+<div class="bar-name">
+	<div class="container">
+		<h4>Bar Manolo</h4>
 	</div>
 </div>
-<div class="col-md-8">
-	<table class="table table-hover">
-		<tbody ng-repeat="category in menu | filter: { name : queryCategory } | filter: containDish">
-			<tr class="active">
-				<td><h4>{{ category.name }}</h4></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr ng-repeat="dish in category.dishes | filter: { name : queryName} | filter: containAllergens" ng-class="{outstock: !{{ dish.stock }} }">
-				<td>{{ dish.name }}</td>
-				<td>{{ dish.price }}</td>
-				<td>
-					<button class="btn btn-default btn-sm" type="button" ng-click="showDish(dish._id)" ng-show="{{ dish.info }}">
-						<span class="glyphicon glyphicon-eye-open" aria-hidden="true">
-						</span>
-					</button>
-				</td>
-			</tr>		
-		</tbody>
-	</table>
+<div class="container">
+	<div class="col-md-3">
+		<div class="form-group">
+			<label for="">Categoria</label>
+	<!-- 		<input ng-model="queryCategory" type="text" class="form-control" id="" placeholder="Filter by category..."> -->
+			<select name="category" id="category" class="form-control" ng-model="queryCategory">
+				<option value="">Todas</option>
+				<option value="{{ category.name }}" ng-repeat="category in menu">
+					{{ category.name }}
+				</option>
+			</select>	
+			<br>		
+			<button class="btn btn-primary filter-btn" ng-click="showFilters = !showFilters">Filtros</button>		
+<!-- 			<button class="btn btn-primary filter-btn" ng-click="showAllergens = !showAllergens">Alérgenos</button> -->
+			<div ng-show="showFilters" class="animate-show">
+				<br>
+				<label for="">Nombre</label>
+				<input ng-model="queryName" type="text" class="form-control" id="" placeholder="Filtre por nombre...">
+				<br>
+				<h6>Alérgenos</h6>
+				<div class="checkbox" ng-repeat="allergen in allergens">
+					<label>
+						<input type="checkbox" name="allergens" ng-model="allergen.on" value="{{allergen.name}}">
+						{{allergen.name}}
+					</label>
+				</div>	
+			</div>	
+
+			<div ng-show="showAllergens" class="animate-show">
+			</div>
+
+		</div>
+	</div>
+	<div class="col-md-8">
+		<table class="table table-hover">
+			<tbody ng-repeat="category in menu | filter: { name : queryCategory } | filter: containDish">
+				<tr class="active">
+					<td><h4>{{ category.name }}</h4></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr ng-repeat="dish in category.dishes | filter: { name : queryName} | filter: containAllergens" ng-class="{outstock: !{{ dish.stock }} }">
+					<td>{{ dish.name }}</td>
+					<td>{{ dish.price }}</td>
+					<td>
+						<button class="btn btn-default btn-sm" type="button" ng-click="showDish(dish._id)" ng-show="{{ dish.info }}">
+							<span class="glyphicon glyphicon-eye-open" aria-hidden="true">
+							</span>
+						</button>
+					</td>
+				</tr>		
+			</tbody>
+		</table>
+	</div>
+	
 </div>

@@ -13,3 +13,30 @@
 	font-weight: 700;
     font-size: 16px;
 }
+.bar-name {
+	background: #DDA828;
+	margin-bottom: 20px;
+}
+.bar-name h4 {
+	color: white;
+}
+
+.navbar-nav {
+	float: right;
+}
+.navbar-nav li {
+	display: inline;
+	float: left;
+}
+.navbar-header {
+	display: inline-block;
+}
+#navbar {
+	display: inline;
+}
+.navbar-inverse {
+	height: 64px;
+}
+.filter-btn {
+	width: 100%
+}

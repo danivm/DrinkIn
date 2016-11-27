@@ -10,7 +10,7 @@ const toggleInfoDish = require('./handlers/toggleInfoDish')
 const toggleStockDish = require('./handlers/toggleStockDish')
 
 router.get('/', isAuthenticated, getDishes)
-router.post('/', isAuthenticated)
+router.post('/', isAuthenticated, addDishes)
 router.delete('/:id', isAuthenticated, delDishes)
 
 router.get('/edit/:id', isAuthenticated, getEditDish)
