@@ -12,8 +12,6 @@ nav.navbar.navbar-inverse
 
     #navbar.navbar-collapse.collapse
       ul.nav.navbar-nav
-        li(class=(title === 'Menu' ? 'active' : '') )
-          a(href='/#/menu') Menu
         if (user)
           li(class=(title === 'Dishes' ? 'active' : '') )
             a(href='/admin/dishes') Productos
@@ -21,8 +19,10 @@ nav.navbar.navbar-inverse
             a(href='/admin/categories') Categorias
           li(class=(title === 'Allergens' ? 'active' : '') )
             a(href='/admin/allergens') Alérgenos
+          li(class=(title === 'Restaurant' ? 'active' : '') )
+            a(href='/admin/restaurant') Restaurante
           li(class=(title === 'Logout' ? 'active' : '') )
             a(href='/logout') Logout
         if (!user)
           li(class=(title === 'Login' ? 'active' : '') )
-            a(href='/login') Admin
+            a(href='/login') Login

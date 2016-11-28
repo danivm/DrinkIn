@@ -1,16 +1,14 @@
 extends layout
 
 block content
+	.bar-name
+		.container
+			h4=restaurantName
 	.container.theme-showcase(role='main')
-		.create
-			.container
-				h3
-					span.glyphicon.glyphicon-pencil.icon_create
-					|  Editar producto
 		.container
 			.row
 				form.form-grup(id="update-dish", role='form')
-					input(type="hidden", name="id", value=dish._id)
+					input(type="hidden", name="id", id="dish-id", value=dish._id)
 					.form-group
 						.col-md-4
 							.row
@@ -23,7 +21,7 @@ block content
 								.col-md-12
 									label.control-label(for='description') Descripción:
 									textarea.form-control(id='description', name='description', rows='8', cols='100')=dish.description
-						.col-md-4
+						.col-md-2
 							label Alérgenos:
 							each allergen in allergens
 								.checkbox
@@ -34,12 +32,16 @@ block content
 											input(type="checkbox" name="allergens" value=allergen.name)
 										| #{allergen.name}
 						.col-md-4
-							label.control-label(for='input') Image:
-							#photo-container
-								img#photoPreview(src='/img/beer.jpg' width="200")
-							br
-							input#fileRoute(type='file', ng-model='image')
-							#progress-container
+							label Imagen
+							style(type='text/css')
+								| !{predefined_css}
+							img#preview-image
+							input(type='file', id='image_file')
+							input(hidden='', name='image_url', id='image_url', value=dish.image_url)
+							div(id='progress-div')
+							style#styles-preview-image
 						.col-md-12
 							button.btn.btn-primary.update(type='submit') Guardar
-							button.btn.btn-default.cancel(type='submit') Cancelar
+							button.btn.btn-default.cancel Cancelar
+	script(src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js")
+	script(type='text/javascript', src='/js/firebase.js')

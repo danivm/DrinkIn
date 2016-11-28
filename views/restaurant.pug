@@ -1,0 +1,27 @@
+extends layout
+
+block content
+	.container.theme-showcase(role='main')
+		h3='Edita tu restaurante'
+		form.form-grup(id="update-restaurant", role='form')
+			.form-group
+				.col-md-4
+					label Imagen
+					style(type='text/css')
+						| !{predefined_css}
+					img#preview-image
+					input(type='file', id='image_file')
+					input(type="hidden", name='image_url', id='image_url', value=restaurant.image_url)
+					input(type="hidden", name="id", id="restaurant-id", value=restaurant._id)
+					div(id='progress-div')
+					style#styles-preview-image
+				.col-md-4
+					label.control-label(for='name') Nombre:
+					input.form-control(type='text', id='name', name='name', value=restaurant.name, required)
+					label.control-label(for='numTables') Mesas:
+					input.form-control(type='number', id='numTables', name='numTables', value=restaurant.numTables, required)
+				.col-md-12
+					button.btn.btn-primary.update(type='submit') Guardar
+					button.btn.btn-default.cancel(type='submit') Cancelar
+	script(src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js")
+	script(type='text/javascript', src='/js/firebase.js')

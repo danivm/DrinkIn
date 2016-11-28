@@ -101,22 +101,72 @@ $('#update-dish .cancel').on('click', function(){
 })
 $('#update-dish').on('submit', function(event) {
 
-	let { id, name, price, description } = this;
-	id = id.value;
-	name = name.value;
-	price = price.value;
+	let { id, name, price, image_url, description } = this;
+	id          = id.value;
+	name        = name.value;
+	price       = price.value;
 	description = description.value;
-	allergens = [].filter.call( this.allergens, ( elem ) => elem.checked  ).map( elem => elem.value )
-	sAllergens = allergens.toString()
+	image_url   = image_url.value;
+	allergens   = [].filter.call( this.allergens, ( elem ) => elem.checked  ).map( elem => elem.value )
+	sAllergens  = allergens.toString()
 	event.preventDefault();
 
 	$.ajax({
 		url: '/admin/dishes/edit',
 		type: 'PUT',
-		data: { name, price, description, id, sAllergens }
+		data: { name, price, description, image_url, id, sAllergens }
 	})
 	.done(function() {
 		window.location.href = "/admin/dishes"
 	})
 
 });
+
+$('#update-restaurant .cancel').on('click', function(event){
+	event.preventDefault();
+	window.location.href = "/admin/dishes"
+})
+$('#update-restaurant').on('submit', function(event) {
+
+	let { name, numTables, image_url } = this;
+	name = name.value;
+	numTables = numTables.value;
+	image_url = image_url.value;
+	event.preventDefault();
+
+	$.ajax({
+		url: '/admin/restaurant',
+		type: 'PUT',
+		data: { name, numTables, image_url }
+	})
+	.done(function() {
+		window.location.href = "/admin/dishes"
+	})
+});
+$('#image_file').on('change', function(event){
+	var files = event.target.files;
+	var file = files[0];
+
+	function getRemoteUrlImage( file ) {
+
+		const { name, type, size } = file;
+
+		function addToAWS({ signedRequest, url }) {
+
+		const options = { headers: { 'Content-Type': type } }
+			return $http.put(signedRequest, file, options )
+						.then( () => url )
+						.catch( err => new Error("Fail uploading!") )
+		}
+
+		if( size > 10585760) return new Error("Image too big!!")
+
+		const url = '/sign-s3';
+
+		return $http.get( url, { params: { name, type } } )
+					.then( d => d.data )
+					.then( addToAWS )
+
+	}
+
+})

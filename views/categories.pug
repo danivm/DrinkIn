@@ -2,9 +2,10 @@ extends layout
 
 block content
 	.bar-name
-		h3=user.restaurantName
+		.container
+			h4=restaurantName
 	.container.theme-showcase(role='main')
-		h1 Categorías
+		h3 Categorías
 		.row
 			.col-md-6
 				form(action='/admin/categories', method='POST', role='form')

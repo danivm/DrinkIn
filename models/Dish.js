@@ -7,6 +7,7 @@ const dishSchema = mongoose.Schema({
 	name: String,
 	price: String,
 	description: String,
+	image_url: String,
 	stock: { type: Boolean, default: true },
 	info: { type: Boolean, default: true },
 	allergens: [ String ],

@@ -5,9 +5,6 @@ const image_url_default='http://images.gofreedownload.net/geant-pictogram-restau
 var Account = new Schema({
     username: String,
     password: String,
-    restaurantName: { type: String, default: 'My New Restaurant' },
-    numTables: { type: Number, default: 20 },
-    image_url: { type: String, default: image_url_default },
 });
 
 Account.plugin( passportLocalMongoose );
