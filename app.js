@@ -5,15 +5,18 @@ const LocalStrategy = require('passport-local').Strategy;
 const session       = require('express-session')
 const cookieParser  = require('cookie-parser');
 
-const db   = require('./db');
-const app  = express()
-const PORT = process.env.PORT || 3000;
+const db     = require('./db');
+const app    = express()
+const PORT   = process.env.PORT || 3000;
 
 const routerCategories = require('./routes/categories');
 const routerAllergens  = require('./routes/allergens');
 const routerDishes     = require('./routes/dishes');
-const routerRestaurant = require('./routes/restaurant')
+const routerRestaurant = require('./routes/restaurant');
+const routerTickets    = require('./routes/Tickets');
 const routerApi        = require('./routes/api')
+
+const socketTicketsEvents = require('./sockets/tickets')
 
 app.set('view engine', 'pug')
 
@@ -41,6 +44,9 @@ app.use( '/admin/categories', routerCategories )
 app.use( '/admin/allergens', routerAllergens )
 app.use( '/admin/dishes', routerDishes )
 app.use( '/admin/restaurant', routerRestaurant )
+app.use( '/admin/tickets', routerTickets )
 app.use( '/api', routerApi )
 
-app.listen(PORT, () => console.log(`Listening on port ${PORT}...`) )
+const server = app.listen(PORT, () => console.log(`Listening on port ${PORT}...`) )
+
+socketTicketsEvents(server);

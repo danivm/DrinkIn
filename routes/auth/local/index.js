@@ -1,7 +1,7 @@
 const express = require('express');
 const passport = require('passport');
 const Account = require('../../../models/account');
-
+const Restaurant = require('../../../models/Restaurant');
 const router = express.Router();
 
 router.get('/register', function(req, res) {
@@ -13,9 +13,15 @@ router.post('/register', function(req, res) {
   const username = req.body.username;
   const password = req.body.password;
 
+
   Account.register( new Account({ username }), password, (err, account) => {
       if (err) return res.render('register', { account : account });
-      passport.authenticate('local')(req, res, () =>  res.redirect('/') );
+      passport.authenticate('local')(req, res, () =>  {
+        let newRestaurant = new Restaurant()
+        newRestaurant.account = req.user._id
+        newRestaurant.save()
+          .then( res.redirect('/admin/dishes') )
+      });
   });
 
 });

@@ -1,14 +1,14 @@
 angular.module('myControllers', ['myServices'])
-	.controller('menuController', function($scope, $rootScope, menuService, $location ) {
+	.controller('menuController', function($scope, $rootScope, menuService, $location, $routeParams ) {
 		$rootScope.collapsed = true;
 		$rootScope.activetab = 'menu';
 		$scope.queryName = ''
 		$scope.showFilters = false
-		menuService.getMenu()
+		menuService.getMenu($routeParams.id)
 			.then( function(response) {
 				$scope.menu = response.data
 			})
-		menuService.getAllergens()
+		menuService.getAllergens($routeParams.id)
 			.then( function(response) {
 				$scope.allergens = response.data
 			})
@@ -19,7 +19,6 @@ angular.module('myControllers', ['myServices'])
 					if ( output === false ){
 						output = $scope.containAllergens(dish)
 					}
-					
 				}
 			})
 			return output
@@ -44,17 +43,26 @@ angular.module('myControllers', ['myServices'])
 
 		}
 	})
-	.controller('homeController', function($scope, $rootScope ) {
+	.controller('homeController', function($scope, $rootScope, homeService, $location ) {
 		$rootScope.collapsed = true;
 		$rootScope.activetab = 'home';
+		homeService.getRestaurants()
+			.then( function(response) {
+				$scope.restaurants = response.data
+			})
+		$rootScope.getMenu = function(){
+			$rootScope.restaurantID=this.restaurantID
+			$location.path('/menu/'+this.restaurantID)
+		}
 	})
-	.controller('dishController', function($scope, $rootScope, dishService, $location, $routeParams ) {
+	.controller('dishController', function($scope, $rootScope, dishService, $window, $routeParams ) {
 		$rootScope.collapsed = true;
 		dishService.getDish($routeParams.dishId)
 			.then( function(response) {
 				$scope.dishInfo = response.data
 			})
 		$scope.close = function(){
-			$location.path('/menu')
+			$window.history.back()
+			// $location.path('/menu/'+$rootScope.restaurantID)
 		}
 	})

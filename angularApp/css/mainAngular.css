@@ -33,3 +33,26 @@
 .filter-btn {
 	width: 100%
 }
+.restaurants-container {
+	margin: 50px auto;
+	text-align: center;
+	max-width: 300px;
+}
+.restaurants-container {
+	margin: 50px auto;
+	text-align: center;
+	max-width: 300px;
+}
+.img-container {
+
+}
+.img-dish {
+	width: 100%;
+	max-width: 400px;
+	border: 1px solid silver;
+	padding: 5px;
+}
+.back-btn {
+	width: 100%;
+	max-width: 400px;
+}

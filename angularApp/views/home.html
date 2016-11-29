@@ -1,12 +1,22 @@
 <div class="container">
-	<h1>Welcome to DrinkIn</h1>
-	<div class="col-md-9">
+	
+	<div class="restaurants-container">
+		<h3>Pide por DrinkIn!</h3>
+		<label for="">Restaurantes</label>
+		<select ng-model="restaurantID" class="form-control" ng-change="getMenu()">
+			<option ng-repeat="restaurant in restaurants"  value="{{ restaurant.account }}">
+				{{restaurant.name}}
+			</option>
+		</select>		
+	</div>
+
+<!-- 	<div class="col-md-9">
 		<iframe src="//giphy.com/embed/J0c0wA5Y7aITu" width="900" height="450" frameborder="0"></iframe>
 		<p>made with pug 🐶</p>
 	</div>
 	<div class="col-md-3">
 		<img src="img/megusta.png" height='300' alt="">
-	</div>
+	</div> -->
 	
 </div>
 

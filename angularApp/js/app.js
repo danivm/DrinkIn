@@ -5,7 +5,7 @@ angular.module("myApp",['ngRoute', 'myControllers','ui.bootstrap', 'ngAnimate'])
 			templateUrl: 'views/home.html',
 			controller: 'homeController'
 		})
-		.when('/menu',{
+		.when('/menu/:id',{
 			templateUrl: 'views/menu.html',
 			controller: 'menuController'
 		})

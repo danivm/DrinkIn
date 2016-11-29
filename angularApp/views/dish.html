@@ -1,21 +1,28 @@
+<div class="bar-name">
+	<div class="container">
+		<h4>Bar Manolo</h4>
+	</div>
+</div>
 <div class="container">
 	<div class="row dish-info">
-		<div class="col-md-6">
-			<div class="col-md-6 ">	
-				<h6>Name:</h6>
+		
+		<div class="col-sm-6 col-sm-offset-3">
+			<div class="col-sm-12 img-container">
+				<img class="img-dish" src="{{dishInfo.image_url}}" alt="">
+			</div>
+			<div class="col-sm-6 ">	
+				<h6>Nombre:</h6>
 				<p>{{ dishInfo.name }}</p>
 			</div>
-			<div class="col-md-6">	
+			<div class="col-sm-6">	
 				<h6>Price:</h6>
 				<p>{{ dishInfo.price }}</p>
 			</div>	
-			<div class="col-md-12">	
+			<div class="col-sm-12">	
 				<h6>Descripción:</h6>
 				<p>{{ dishInfo.description }}</p>
 			</div>	
-		</div>
-		<div class="col-md-3">
-			<div class="col-md-12">
+			<div class="col-sm-12">
 				<h6>Allergens:</h6>
 				<ul>
 					<li ng-repeat="allergen in dishInfo.allergens">
@@ -23,14 +30,11 @@
 					</li>
 				</ul>
 			</div>	
-			
-		</div>	
-		<div class="col-md-12">
-			<div class="col-md-12">
-				<button class="btn btn-primary" ng-click="close()">
-					Close
+			<div class="col-sm-12">
+				<button class="btn btn-primary back-btn" ng-click="close()">
+					menu
 				</button>			
 			</div>
-		</div>
+		</div>	
 	</div>
 </div>

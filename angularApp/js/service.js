@@ -1,14 +1,22 @@
 angular.module('myServices', [])
 	.factory('menuService', function($http) {
-		function getMenu() {
-			return $http.get("/api/menu");
+		function getMenu(id) {
+			return $http.get("/api/menu/"+id);
 		}
-		function getAllergens() {
-			return $http.get("/api/allergens");
+		function getAllergens(id) {
+			return $http.get("/api/allergens/"+id);
 		}
 		return {
 			getMenu: getMenu,
 			getAllergens: getAllergens
+		}
+	})
+	.factory('homeService', function($http){
+		function getRestaurants() {
+			return $http.get("/api/restaurants");
+		}
+		return {
+			getRestaurants: getRestaurants
 		}
 	})
 	.factory('dishService', function($http){

@@ -1,34 +1,45 @@
 const Dish = require('../../../models/Dish')
 const Allergen = require('../../../models/Allergen')
 const Restaurant = require('../../../models/Restaurant')
-const title = 'Dishes'
+const mongoose = require('mongoose')
 
 function getEditDishes(req, res) {
+
 	const user = req.user;
-	const dishID = req.params.id
-	let restaurantName = ''
+	const dishID = req.params.id;
+	
+	const getDish = (idDish) => Dish.findById(idDish) // return oDish
 
-	Restaurant.findOne({ account: user._id })
-					.then(restaurant => {
-						restaurantName = restaurant.name
+	function getRestaurant(dish) {
+		return Restaurant.findOne({ account: user._id })
+					.then( ({ name: restaurantName }) => {
+						return { restaurantName, dish }
 					})
-
-	function getDish(idDish) {
-		return Dish.findById(idDish)
-					.then( oDish => oDish)
 	}
 
-	function getAllergens(dish){
+	function getAllergens( oData ) {
 		return Allergen.find({ account: user._id })
-					.then( (allergens) => {	
-						const predefined_css = `#preview-image { background-image: url( ${dish.image_url} ) }`
-						res.render('dish-edit', { user, dish, allergens, restaurantName, title, predefined_css }) 
-					})
+					.then( allergens => {
+						oData.allergens = allergens;
+						oData.user = user;
+						return oData
+					}) 
 	}
 
-	getDish(dishID)
-		.then(getAllergens)
-		.catch( err => console.log(err) )
+	function renderTemplate( data ) {
+		const { image_url } = data.dish;
+		data.title = 'Dishes'
+		data.predefined_css = `#preview-image { background-image: url( ${image_url} ) }`
+		res.render('dish-edit', data ) 
+	} 
+
+	getDish( dishID )
+		.then( getRestaurant )
+		.then( getAllergens )
+		.then( renderTemplate )
+		// .then( addDataRestaurant )
+		// .then( renderTemplate )
+		.catch( console.log )
 
 }
 

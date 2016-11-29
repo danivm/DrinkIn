@@ -4,8 +4,8 @@ const collection = 'restaurants';
 
 // Schema definition
 const restaurantSchema = mongoose.Schema({
-	name: String,
-	numTables: Number,
+	name: { type: String, default: 'My New Bar' },
+	numTables: { type: Number, default: 20 },
 	image_url: String,
 	account: {
 		type: mongoose.Schema.Types.ObjectId,

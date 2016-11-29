@@ -13,6 +13,8 @@ nav.navbar.navbar-inverse
     #navbar.navbar-collapse.collapse
       ul.nav.navbar-nav
         if (user)
+          li(class=(title === 'Tickets' ? 'active' : '') )
+            a(href='/admin/tickets') Tickets
           li(class=(title === 'Dishes' ? 'active' : '') )
             a(href='/admin/dishes') Productos
           li( class=(title === 'Categories' ? 'active' : '') )
