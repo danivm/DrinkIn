@@ -17,7 +17,9 @@ angular.module('myServices', [])
 	})
 	.factory('mySocket', function(){
 		console.log("socket....")
-		var socket = io.connect('http://localhost:3000')
+		// var socket = io.connect('http://localhost:3000')
+		var socket = io.connect('https://drinkin.herokuapp.com/')
+		
 		socket.on('connect', function(){
 			console.log('User is connected!');
 			socket
