@@ -13,7 +13,7 @@ const routerCategories = require('./routes/categories');
 const routerAllergens  = require('./routes/allergens');
 const routerDishes     = require('./routes/dishes');
 const routerRestaurant = require('./routes/restaurant');
-const routerTickets    = require('./routes/Tickets');
+const routerTickets    = require('./routes/tickets');
 const routerApi        = require('./routes/api')
 
 const socketTicketsEvents = require('./sockets/tickets')
