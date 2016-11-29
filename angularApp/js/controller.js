@@ -1,5 +1,5 @@
 angular.module('myControllers', ['myServices'])
-	.controller('menuController', function($scope, $rootScope, menuService, $location, $routeParams ) {
+	.controller('menuController', function($scope, mySocket, $rootScope, menuService, $location, $routeParams ) {
 		$rootScope.collapsed = true;
 		$rootScope.activetab = 'menu';
 		$scope.queryName = ''
@@ -39,20 +39,38 @@ angular.module('myControllers', ['myServices'])
 
 			$location.path('/dish/'+dishId)
 		}
-		$scope.toggleFilters = function(){
+		menuService.getRestaurantName($routeParams.id)
+			.then(function(res){
+				console.log(res)
+				$scope.restaurantName = res.data
+			})
+		$scope.addTicket = function(idDish){
+			var newTicket = {
+				dish: idDish,
+				table: 5,
+				account: $rootScope.restaurantID,
+				status: 0,
+				creationDate: Date.now(),
+			};
 
+			mySocket.emit('add-ticket', newTicket);
+			return false;
 		}
+
 	})
 	.controller('homeController', function($scope, $rootScope, homeService, $location ) {
 		$rootScope.collapsed = true;
 		$rootScope.activetab = 'home';
+		$rootScope.restaurantID ='';
 		homeService.getRestaurants()
 			.then( function(response) {
 				$scope.restaurants = response.data
 			})
 		$rootScope.getMenu = function(){
-			$rootScope.restaurantID=this.restaurantID
-			$location.path('/menu/'+this.restaurantID)
+			const oRestaurant = JSON.parse(this.oRestaurant)
+			const restaurantID = oRestaurant.account
+			$rootScope.restaurantID = restaurantID
+			$location.path('/menu/'+restaurantID)
 		}
 	})
 	.controller('dishController', function($scope, $rootScope, dishService, $window, $routeParams ) {

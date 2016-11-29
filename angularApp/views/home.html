@@ -3,8 +3,8 @@
 	<div class="restaurants-container">
 		<h3>Pide por DrinkIn!</h3>
 		<label for="">Restaurantes</label>
-		<select ng-model="restaurantID" class="form-control" ng-change="getMenu()">
-			<option ng-repeat="restaurant in restaurants"  value="{{ restaurant.account }}">
+		<select ng-model="oRestaurant" class="form-control" ng-change="getMenu()">
+			<option ng-repeat="restaurant in restaurants"  value="{{ restaurant }}">
 				{{restaurant.name}}
 			</option>
 		</select>		

@@ -6,10 +6,23 @@ angular.module('myServices', [])
 		function getAllergens(id) {
 			return $http.get("/api/allergens/"+id);
 		}
+		function getRestaurantName(id){
+			return $http.get("/api/restaurant/"+id);
+		}
 		return {
 			getMenu: getMenu,
-			getAllergens: getAllergens
+			getAllergens: getAllergens,
+			getRestaurantName: getRestaurantName
 		}
+	})
+	.factory('mySocket', function(){
+		console.log("socket....")
+		var socket = io.connect('http://localhost:3000')
+		socket.on('connect', function(){
+			console.log('User is connected!');
+			socket
+		});
+  		return socket;
 	})
 	.factory('homeService', function($http){
 		function getRestaurants() {

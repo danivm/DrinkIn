@@ -10,7 +10,7 @@ getTickets();
 
 function render(data) {  
   var html = data.map(function(ticket, index) {
-    return(`<div class="ticket-container col-md-12">
+    return(`<div class="ticket-container row">
               <div class="col-md-2">
                 <strong>${ticket.table}</strong>
               </div>
