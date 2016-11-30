@@ -37,29 +37,43 @@
 		</div>
 	</div>
 	<div class="col-md-8">
-		<table class="table table-hover">
+		<table class="table table-hover table-menu">
 			<tbody ng-repeat="category in menu | filter: { name : queryCategory } | filter: containDish">
 				<tr class="active">
+					<td class="col0"></td>
 					<td><h4>{{ category.name }}</h4></td>
+					<td></td>
 					<td></td>
 					<td></td>
 				</tr>
 				<tr ng-repeat="dish in category.dishes | filter: { name : queryName} | filter: containAllergens" ng-class="{outstock: !{{ dish.stock }} }">
-					<td>{{ dish.name }}</td>
-					<td>{{ dish.price }}</td>
-					<td>
+					<td class="col0" id="{{dish._id}}" data-name="{{dish.name}}" data-price="{{dish.price}}">
+						<select ng-model="orderList[dish._id]" ng-options="selectedItem*1 as selectedItem for selectedItem in numValues" ng-show="orderList[dish._id] > 0" class="form-control" ng-change="updateList()"></select>
+					</td>
+					<td class="col1">{{ dish.name }}</td>
+					<td class="col2">{{ dish.price }}</td>
+					<td class="col3">
 						<button class="btn btn-default btn-sm" type="button" ng-click="showDish(dish._id)" ng-show="{{ dish.info }}">
 							<span class="glyphicon glyphicon-eye-open" aria-hidden="true">
 							</span>
 						</button>
-						<button class="btn btn-default btn-sm" type="button" ng-click="addTicket(dish._id)" ng-show="{{ dish.stock }}">
+					</td>
+					<td class="col4">
+						<button class="btn btn-default btn-sm" type="button" ng-click="addDish(dish._id)" ng-show="{{ dish.stock }}" >
 							<span class="glyphicon glyphicon-plus" aria-hidden="true">
 							</span>
 						</button>
 					</td>
-				</tr>		
+				</tr>	
 			</tbody>
 		</table>
+
 	</div>
+	
+</div>
+
+<div class="container-confirm" ng-show="showConfirm" >
+		
+	<button class="btn btn-primary confirm-btn btn-block" ng-click="showList()">pedir</button>
 	
 </div>

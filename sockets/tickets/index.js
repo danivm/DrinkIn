@@ -17,6 +17,7 @@ function eventsSocket(server) {
 				})	
 		})
 		socket.on('add-ticket', function(data) {
+			console.log('add ticket OK')
 			addTicket(data)
 				.then(getTickets)
 				.then( tickets => {

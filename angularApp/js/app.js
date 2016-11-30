@@ -1,4 +1,4 @@
-angular.module("myApp",['ngRoute', 'myControllers','ui.bootstrap', 'ngAnimate']) 
+angular.module("myApp",['ngRoute', 'myControllers','ui.bootstrap', 'ngAnimate', 'ngDialog']) 
 	.config( function($routeProvider) {
 		$routeProvider
 		.when('/', {

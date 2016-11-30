@@ -1,0 +1,19 @@
+<h5>Lista</h5>
+<table class="table table-hover">
+	<tbody ng-repeat="dish in finalList">
+		<tr>
+			<td>{{dish.num}}</td>
+			<td>{{dish.name}}</td>
+			<td class="align-right">{{(dish.price * dish.num).toFixed(2)}} €</td>
+		</tr>
+	</tbody>
+</table>
+<p class="total-price align-right">Total: <strong>{{totalPrice.toFixed(2)}}</strong> €</p>
+<form action="">
+	<label>¿En que mesa estás?</label>
+	<select ng-model="numTable" class="form-control" autofocus required>
+		<option ng-repeat="i in getNumber(totalTables) track by $index">{{$index+1}}</option>
+	</select>
+	<br>
+	<button ng-disabled="!numTable" class="btn btn-primary ticket-btn" ng-click="addTickets(numTable)">Confirmar pedido</button>
+</form>

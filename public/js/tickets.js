@@ -1,6 +1,6 @@
 //debugger;
-// var socket = io.connect('http://localhost:3000');
-var socket = io.connect('https://drinkin.herokuapp.com/')
+var socket = io.connect('http://localhost:3000');
+// var socket = io.connect('https://drinkin.herokuapp.com/')
 //var socket = io()
 
 socket.on('tickets', function(data) {  
@@ -36,15 +36,15 @@ function getTickets() {
   return false;
 }
 
-function addTicket(e) {  
-  var newTicket = {
-    dish: document.getElementById('dishID').value,
-    table: document.getElementById('numTable').value,
-    account: document.getElementById('accountID').value,
-    status: 0,
-    creationDate: Date.now(),
-  };
+// function addTicket(e) {  
+//   var newTicket = {
+//     dish: document.getElementById('dishID').value,
+//     table: document.getElementById('numTable').value,
+//     account: document.getElementById('accountID').value,
+//     status: 0,
+//     creationDate: Date.now(),
+//   };
 
-  socket.emit('add-ticket', newTicket);
-  return false;
-}
+//   socket.emit('add-ticket', newTicket);
+//   return false;
+// }

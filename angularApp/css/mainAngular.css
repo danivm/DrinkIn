@@ -51,3 +51,63 @@
 	width: 100%;
 	max-width: 400px;
 }
+
+.container-confirm {
+	position: fixed;
+    border-top: 1px solid #CCC;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    background: rgba(255,255,255,.8);
+}
+
+.confirm-btn {
+	max-width:400px;
+	margin: 0 auto;
+}
+.table-menu {
+	margin-bottom: 100px;
+}
+
+.col1 {
+	width: 50%;
+	text-align: left;
+}
+.col2 {
+	width: 10%;
+	text-align: left;
+}
+.col3 {
+	width: 10%;
+	text-align: left;
+}
+.col4 {
+	width: 10%;
+	text-align: left;
+}
+.col0 {
+	width: 5%;
+	min-width: 45px;
+	text-align: left;
+}
+.col0 select {
+	padding: 0;
+	height: 100%;
+	box-shadow: none;
+	color: #DDA828;
+	font-weight: bold;
+}
+.align-right {
+	text-align: right;
+}
+.ticket-btn {
+	margin-left: 30%;
+}
+.success {
+	padding: 20px;
+	background: #DFF0D8;
+	color: #3C763D;
+	border: 1px solid #D6E9C6;
+	text-align: center;
+}

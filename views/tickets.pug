@@ -7,21 +7,15 @@ block content
 			input(type="hidden", id="accountID", value=user._id)
 	.container.theme-showcase(role='main')
 		h3 Tickets
-		.row
-			.col-md-6
-				form(onsubmit='return addTicket(this)')
-					input#dishID(type='text', placeholder='ID Plato')
-					input#numTable(type='number', placeholder='Num.Mesa')
-					input(type='submit', value='Añadir')
-			.col-md-12
-				#header-container
-					.row
-						.col-md-2
-							h5='Mesa'
-						.col-md-4
-							h5='Producto'
-						.col-md-2
-							h5='Precio'
-				#tickets-container
+
+		#header-container
+			.row
+				.col-md-2
+					h5='Mesa'
+				.col-md-4
+					h5='Producto'
+				.col-md-2
+					h5='Precio'
+		#tickets-container
 	script(type='text/javascript',src="https://cdn.socket.io/socket.io-1.4.5.js")
 	script(type='text/javascript',src='/js/tickets.js')

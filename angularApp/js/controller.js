@@ -1,9 +1,25 @@
 angular.module('myControllers', ['myServices'])
-	.controller('menuController', function($scope, mySocket, $rootScope, menuService, $location, $routeParams ) {
+	.controller('menuController', function($scope, mySocket, $rootScope, $route, menuService, $location, $routeParams, ngDialog, $location ) {
 		$rootScope.collapsed = true;
 		$rootScope.activetab = 'menu';
-		$scope.queryName = ''
-		$scope.showFilters = false
+		$scope.queryName = '';
+		$scope.showFilters = false;
+
+		var temp = JSON.parse(localStorage.getItem($routeParams.id))
+
+		if(temp){
+			if (temp.orderList == undefined) {
+				$rootScope.orderList = {}
+			} else {
+				$rootScope.orderList = temp.orderList
+			}
+		} else {			
+			localStorage.setItem($routeParams.id, "{}")
+			$rootScope.orderList = {}
+		}
+		
+		$scope.numValues = ["0","1","2","3","4","5","6","7","8","9","10"]
+		$scope.selectedItem = 0
 		menuService.getMenu($routeParams.id)
 			.then( function(response) {
 				$scope.menu = response.data
@@ -41,20 +57,85 @@ angular.module('myControllers', ['myServices'])
 		}
 		menuService.getRestaurantName($routeParams.id)
 			.then(function(res){
-				console.log(res)
-				$scope.restaurantName = res.data
+				$rootScope.restaurantName = res.data.name
+				$rootScope.totalTables = res.data.numTables
 			})
-		$scope.addTicket = function(idDish){
-			var newTicket = {
-				dish: idDish,
-				table: 5,
-				account: $rootScope.restaurantID,
-				status: 0,
-				creationDate: Date.now(),
-			};
+		$scope.addDish = function(idDish){
+			if ($rootScope.orderList[idDish]) {
+				if($rootScope.orderList[idDish]<10){
+					++$rootScope.orderList[idDish]
+				}
+				
+			} else {
+				$rootScope.orderList[idDish]=1
+			}
+			$scope.updateList()
+		}
+		$rootScope.addTickets = function(numTable){
+			$rootScope.finalList.forEach(function(dish){
+				for(x=1 ; x <= dish.num; x++){					
+					var newTicket = {
+						dish: dish.id,
+						table: numTable,
+						account: $routeParams.id,
+						status: 0,
+						creationDate: Date.now(),
+					};
+					mySocket.emit('add-ticket', newTicket);	
+				}
+			});
+			$rootScope.finalList = []
+			$rootScope.orderList = {}
+			var temp = JSON.parse(localStorage.getItem($routeParams.id))
+			temp.orderList = {}
+			localStorage.setItem($routeParams.id, JSON.stringify(temp))
+			ngDialog.close()
+			$scope.updateList()
+			ngDialog.open({
+				template: '<div class="success" role="alert">Pedido realizado correctamente!</div>',
+				plain: true
+			});
+		}
+		$scope.updateList = function(){
+			var empty = true
+			for (dish in $rootScope.orderList){
+				if($rootScope.orderList[dish]>0) {
+					empty = false
+				} else {
+					delete $rootScope.orderList[dish]
+				}
+			}
+			if(empty == false){
+				$scope.showConfirm = true
+			} else {
+				$scope.showConfirm = false
+			}
+			var temp = JSON.parse(localStorage.getItem($routeParams.id))
+			temp.orderList = $rootScope.orderList
+			localStorage.setItem($routeParams.id, JSON.stringify(temp))
+		}
+		$scope.updateList()
+		$rootScope.getNumber = function(num) {
+    		return new Array(num);   
+		}
+		$scope.showList = function(){
+			var finalList = []
+			$rootScope.totalPrice = 0
+			angular.forEach($rootScope.orderList, function(num, dishID) {
+				var newItem = {
+					id: dishID,
+					num: num,
+					name: document.getElementById(dishID).dataset.name,
+					price: document.getElementById(dishID).dataset.price
+				};
+				finalList.push(newItem)
+				$rootScope.totalPrice += (document.getElementById(dishID).dataset.price * num)
+			});
+			$rootScope.finalList = finalList
 
-			mySocket.emit('add-ticket', newTicket);
-			return false;
+			ngDialog.open({
+				template: '/ngDialog/orderList.html'
+			});
 		}
 
 	})
