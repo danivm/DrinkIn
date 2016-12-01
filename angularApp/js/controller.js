@@ -72,6 +72,7 @@ angular.module('myControllers', ['myServices'])
 			$scope.updateList()
 		}
 		$rootScope.addTickets = function(numTable){
+
 			$rootScope.finalList.forEach(function(dish){
 				for(x=1 ; x <= dish.num; x++){					
 					var newTicket = {
@@ -89,12 +90,14 @@ angular.module('myControllers', ['myServices'])
 			var temp = JSON.parse(localStorage.getItem($routeParams.id))
 			temp.orderList = {}
 			localStorage.setItem($routeParams.id, JSON.stringify(temp))
-			ngDialog.close()
 			$scope.updateList()
+			ngDialog.closeAll()
+			
 			ngDialog.open({
 				template: '<div class="success" role="alert">Pedido realizado correctamente!</div>',
 				plain: true
 			});
+			
 		}
 		$scope.updateList = function(){
 			var empty = true

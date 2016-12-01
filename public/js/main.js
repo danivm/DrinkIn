@@ -170,3 +170,9 @@ $('#image_file').on('change', function(event){
 	}
 
 })
+$(".ticket-categories :checkbox").click(function() {
+	$(".ticket-container").hide();
+	$(".ticket-categories :checkbox:checked").each(function() {
+		$("." + $(this).val()).show();
+	});
+});

@@ -1,0 +1,45 @@
+.Pendiente {
+	margin-bottom: 5px;
+	padding: 1px;
+	background: #F2DEDE;
+	color: #A94442;
+	border: 2px solid #EBCCD1;
+}
+.Pendiente .status {
+	color: #A94442;
+	font-size: normal;
+	font-size: small;
+}
+.Marchando {
+	margin-bottom: 5px;
+	padding: 1px;
+	background: #FCF8E3;
+	color: #8A6D3B;
+	border: 2px solid #FAEBCC;
+}
+.Marchando .status {
+	color: #8A6D3B;
+	font-size: small;
+}
+.Servido {
+	margin-bottom: 5px;
+	padding: 1px;
+	background: #DFF0D8;
+	color: #3C763D;
+	border: 2px solid #D6E9C6;
+}
+.Servido .status {
+	color: #3C763D;
+	font-size: small;
+}
+.btn-ticket, .btn-ticket:focus{
+	background: #555;
+	color: white;
+}
+.btn-ticket:hover {
+	background: black;
+	color: #DDA828;
+}
+.ticket-container p {
+	margin: 7px 0;
+}

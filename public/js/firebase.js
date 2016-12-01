@@ -27,8 +27,7 @@ window.onload = function() {
 }
 
 function uploadFile(file) {
-	console.log(file)
-	console.log(file.size)
+
 	if( file.size > 100000) {
 		var error_msg = '<p>Max. 1MB</p>'
 		document.getElementById('progress-div').innerHTML = error_msg
@@ -70,3 +69,5 @@ function updateProgress(percentage) {
 	}
 	pDiv.innerHTML = textoMensaje;
 }
+
+

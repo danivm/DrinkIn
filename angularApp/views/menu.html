@@ -1,10 +1,11 @@
-<div class="bar-name">
-	<div class="container">
-		<h4>{{ restaurantName }}</h4>
+<main>
+	<div class="bar-name">
+		<div class="container">
+			<h4>{{ restaurantName }}</h4>
+		</div>
 	</div>
-</div>
-<div class="container">
-	<div class="col-md-3">
+
+	<div class="col-md-3 col-md-offset-1">
 		<div class="form-group">
 			<label for="">Categoria</label>
 	<!-- 		<input ng-model="queryCategory" type="text" class="form-control" id="" placeholder="Filter by category..."> -->
@@ -36,7 +37,7 @@
 
 		</div>
 	</div>
-	<div class="col-md-8">
+	<div class="col-md-7">
 		<table class="table table-hover table-menu">
 			<tbody ng-repeat="category in menu | filter: { name : queryCategory } | filter: containDish">
 				<tr class="active">
@@ -69,11 +70,12 @@
 		</table>
 
 	</div>
-	
-</div>
-
-<div class="container-confirm" ng-show="showConfirm" >
 		
-	<button class="btn btn-primary confirm-btn btn-block" ng-click="showList()">pedir</button>
-	
-</div>
+
+
+	<div class="container-confirm" ng-show="showConfirm" >
+			
+		<button class="btn btn-primary confirm-btn btn-block" ng-click="showList()">pedir</button>
+		
+	</div>
+</main>

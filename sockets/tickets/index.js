@@ -1,5 +1,7 @@
 const getTickets = require('./handlers/getTickets')
 const addTicket = require('./handlers/addTicket')
+const updateTicket = require('./handlers/updateTicket')
+const nextStatus = require('./handlers/nextStatus')
 
 function eventsSocket(server) {
 
@@ -17,8 +19,21 @@ function eventsSocket(server) {
 				})	
 		})
 		socket.on('add-ticket', function(data) {
-			console.log('add ticket OK')
 			addTicket(data)
+				.then(getTickets)
+				.then( tickets => {
+					io.sockets.emit('tickets', tickets)
+				})	
+		})
+		socket.on('update-ticket', function(data) {
+			updateTicket(data)
+				.then(getTickets)
+				.then( tickets => {
+					io.sockets.emit('tickets', tickets)
+				})	
+		})
+		socket.on('next-status', function(data) {
+			nextStatus(data)
 				.then(getTickets)
 				.then( tickets => {
 					io.sockets.emit('tickets', tickets)

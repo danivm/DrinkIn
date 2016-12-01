@@ -8,6 +8,9 @@
 .outstock {
 	text-decoration: line-through
 }
+.dish-info {
+	margin-bottom: 50px;
+}
 .dish-info h6 {
 	color: #DDA828;
 	font-weight: 700;
@@ -34,12 +37,14 @@
 	width: 100%
 }
 .restaurants-container {
-	margin: 50px auto;
+	margin: 100px auto;
+	margin-bottom: 0;
 	text-align: center;
 	max-width: 300px;
+	color: white;
 }
-.img-container {
-
+.restaurants-container h3{
+	color: white;
 }
 .img-dish {
 	width: 100%;
@@ -111,3 +116,4 @@
 	border: 1px solid #D6E9C6;
 	text-align: center;
 }
+

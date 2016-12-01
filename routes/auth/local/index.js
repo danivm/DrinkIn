@@ -31,7 +31,7 @@ router.get('/login', function(req, res) {
 });
 
 router.post('/login', passport.authenticate('local'), function(req, res) {
-    res.redirect('/admin/dishes');
+    res.redirect('/admin/tickets');
 });
 
 router.get('/logout', function(req, res) {

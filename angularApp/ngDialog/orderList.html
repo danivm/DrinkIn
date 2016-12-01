@@ -9,11 +9,11 @@
 	</tbody>
 </table>
 <p class="total-price align-right">Total: <strong>{{totalPrice.toFixed(2)}}</strong> €</p>
-<form action="">
+<!-- <form action=""> -->
 	<label>¿En que mesa estás?</label>
 	<select ng-model="numTable" class="form-control" autofocus required>
 		<option ng-repeat="i in getNumber(totalTables) track by $index">{{$index+1}}</option>
 	</select>
 	<br>
 	<button ng-disabled="!numTable" class="btn btn-primary ticket-btn" ng-click="addTickets(numTable)">Confirmar pedido</button>
-</form>
+<!-- </form> -->

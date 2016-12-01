@@ -1,22 +1,72 @@
-<div class="container">
-	
-	<div class="restaurants-container">
-		<h3>Pide por DrinkIn!</h3>
-		<label for="">Restaurantes</label>
-		<select ng-model="oRestaurant" class="form-control" ng-change="getMenu()">
-			<option ng-repeat="restaurant in restaurants"  value="{{ restaurant }}">
-				{{restaurant.name}}
-			</option>
-		</select>		
+<main>
+	<div class="container">
+		<div class="restaurants-container">
+			<h3>Pide por DrinkIn!</h3>
+			<label for="">Restaurantes</label>
+			<select ng-model="oRestaurant" class="form-control" ng-change="getMenu()">
+				<option ng-repeat="restaurant in restaurants"  value="{{ restaurant }}">
+					{{restaurant.name}}
+				</option>
+			</select>		
+		</div>
+		
+	</div>		
+</main>
+<footer>
+	<div class="container">
+		<p>Created by <a href="https://twitter.com/danimzrz">Dani Muñoz</a></p>
 	</div>
+</footer>
+<style>
+	html {
+		position: relative;
+		min-height: 100%;
+		background: url("../img/barcelona-skyline-hd.jpg");
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+	main {
+		min-height: 500px;
+	}
 
-<!-- 	<div class="col-md-9">
-		<iframe src="//giphy.com/embed/J0c0wA5Y7aITu" width="900" height="450" frameborder="0"></iframe>
-		<p>made with pug 🐶</p>
-	</div>
-	<div class="col-md-3">
-		<img src="img/megusta.png" height='300' alt="">
-	</div> -->
-	
-</div>
-
+	footer {
+	    position: absolute;
+	    bottom: 0;
+	    width: 100%;
+	    height: 60px;
+	    border-top: 1px solid silver;
+	    background-color: rgba(255,255,255,0.7)
+	}
+	footer p {
+		margin: 0;
+		text-align: right;
+		padding: 15px;
+		font-size: 15px;
+		font-weight: bold;
+	}
+	body {
+		background: transparent;
+	}
+	footer a {
+		color: #666666;
+	}
+	footer a:hover {
+		color: #DDA828;
+		text-decoration: none;
+	}
+	@media (max-width: 600px) {
+		html {
+			background: url("../img/barcelona-skyline.jpg");
+			background-size: 100% auto;
+			background-position: 0 80%;
+			background-repeat: no-repeat;
+		}
+		.restaurants-container{
+			color: black;
+		}
+		.restaurants-container h3{
+			color: black;
+		}
+	}
+</style>

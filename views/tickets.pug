@@ -6,16 +6,25 @@ block content
 			h4=restaurantName
 			input(type="hidden", id="accountID", value=user._id)
 	.container.theme-showcase(role='main')
-		h3 Tickets
+		.col-md-2.ticket-categories
+			h5='Categorías'
+			each category in categories
+				.checkbox
+					label
+						input(type="checkbox" name="categories" checked=true value=category._id)
+						| #{category.name}
 
-		#header-container
-			.row
-				.col-md-2
-					h5='Mesa'
-				.col-md-4
-					h5='Producto'
-				.col-md-2
-					h5='Precio'
-		#tickets-container
+		.col-md-10
+			#header-container
+				.row
+					.col-xs-2
+						h5='Hora'
+					.col-xs-2
+						h5='Mesa'
+					.col-xs-4
+						h5='Producto'
+					.col-xs-2.hidden-xs
+						h5='Estado'
+			#tickets-container
 	script(type='text/javascript',src="https://cdn.socket.io/socket.io-1.4.5.js")
 	script(type='text/javascript',src='/js/tickets.js')
