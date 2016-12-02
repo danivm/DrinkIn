@@ -28,7 +28,7 @@ window.onload = function() {
 
 function uploadFile(file) {
 
-	if( file.size > 100000) {
+	if( file.size > 1000000) {
 		var error_msg = '<p>Max. 1MB</p>'
 		document.getElementById('progress-div').innerHTML = error_msg
 	} else {
