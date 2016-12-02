@@ -75,7 +75,7 @@
 	margin-bottom: 100px;
 }
 
-.col1 {
+/*.col1 {
 	width: 50%;
 	text-align: left;
 }
@@ -90,9 +90,8 @@
 .col4 {
 	width: 10%;
 	text-align: left;
-}
+}*/
 .col0 {
-	width: 5%;
 	min-width: 45px;
 	text-align: left;
 }

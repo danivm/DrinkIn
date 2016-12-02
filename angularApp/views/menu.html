@@ -37,29 +37,29 @@
 
 		</div>
 	</div>
-	<div class="col-md-7">
+	<div class="col-md-7 col-xs-12">
 		<table class="table table-hover table-menu">
 			<tbody ng-repeat="category in menu | filter: { name : queryCategory } | filter: containDish">
 				<tr class="active">
 					<td class="col0"></td>
-					<td><h4>{{ category.name }}</h4></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<td class="col1"><h4>{{ category.name }}</h4></td>
+					<td class="col2"></td>
+					<td class="col3"></td>
+<!-- 					<td class="col4"></td> -->
 				</tr>
 				<tr ng-repeat="dish in category.dishes | filter: { name : queryName} | filter: containAllergens" ng-class="{outstock: !{{ dish.stock }} }">
 					<td class="col0" id="{{dish._id}}" data-name="{{dish.name}}" data-price="{{dish.price}}">
 						<select ng-model="orderList[dish._id]" ng-options="selectedItem*1 as selectedItem for selectedItem in numValues" ng-show="orderList[dish._id] > 0" class="form-control" ng-change="updateList()"></select>
 					</td>
-					<td class="col1">{{ dish.name }}</td>
+					<td class="col1" ng-click="!dish.info || showDish(dish._id)">{{ dish.name }}</td>
 					<td class="col2">{{ dish.price }}</td>
-					<td class="col3">
+<!-- 					<td class="col3">
 						<button class="btn btn-default btn-sm" type="button" ng-click="showDish(dish._id)" ng-show="{{ dish.info }}">
 							<span class="glyphicon glyphicon-eye-open" aria-hidden="true">
 							</span>
 						</button>
-					</td>
-					<td class="col4">
+					</td> -->
+					<td class="col3">
 						<button class="btn btn-default btn-sm" type="button" ng-click="addDish(dish._id)" ng-show="{{ dish.stock }}" >
 							<span class="glyphicon glyphicon-plus" aria-hidden="true">
 							</span>
