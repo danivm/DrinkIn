@@ -14,6 +14,7 @@
 </main>
 <footer>
 	<div class="container">
+		<a href="http://www.skylabcoders.com/"><img src="img/skylab-grey.png" alt=""></a>
 		<p>Created by <a href="https://twitter.com/danimzrz">Dani Muñoz</a></p>
 	</div>
 </footer>
@@ -40,21 +41,26 @@
 	}
 	footer p {
 		margin: 0;
-		text-align: right;
-		padding: 15px;
+		float: right;
+		margin-top: 15px;
 		font-size: 15px;
-		font-weight: bold;
+	}
+	footer img {
+		height: 30px;
+		margin-top: 15px;
 	}
 	body {
 		background: transparent;
 	}
 	footer a {
 		color: #666666;
+		font-weight: bold;
 	}
 	footer a:hover {
 		color: #DDA828;
 		text-decoration: none;
 	}
+
 	@media (max-width: 600px) {
 		html {
 			background: url("../img/barcelona-skyline.jpg");
@@ -67,6 +73,15 @@
 		}
 		.restaurants-container h3{
 			color: black;
+		}
+		footer p { 
+			font-weight: normal;
+			font-size: 12px;
+			margin-top: 18px;
+		}
+		footer img {
+			height: 20px;
+			margin-top: 20px;
 		}
 	}
 </style>

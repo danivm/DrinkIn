@@ -92,7 +92,11 @@
 	text-align: left;
 }*/
 .col0 {
-	min-width: 45px;
+	width: 45px;
+	text-align: left;
+}
+.col3 {
+	width: 45px;
 	text-align: left;
 }
 .col0 select {
