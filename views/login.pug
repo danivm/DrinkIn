@@ -7,9 +7,9 @@ block content
     br
     form(role='form', action="/login",method="post")
       .form-group
-          input.form-control(type='text', name="username", placeholder='Enter Username' autofocus, value="skylab")
+          input.form-control(type='text', name="username", placeholder='Enter Username' autofocus)
       .form-group
-        input.form-control(type='password', name="password", placeholder='Password', value="skylab")
+        input.form-control(type='password', name="password", placeholder='Password')
       button.btn.btn-primary(type='submit') Login
       a(href='/register')
         button.btn.btn-default(type="button") SignUp
