@@ -120,3 +120,34 @@
 	text-align: center;
 }
 
+.navbar-brand {
+	padding: 16px;
+}
+.navbar-brand img {
+	height: 100%
+}
+
+#google_translate_element {
+	float: right;
+	padding: 15px;
+}
+.goog-te-gadget-icon{
+	background-image: url("/img/google_traductor.png") !important;
+	background-size: cover !important;
+	background-position: 0 !important;
+}
+.goog-te-menu-value {
+	display: none !important;
+}
+
+.goog-te-gadget-simple { 
+	background-color: transparent !important;
+	border: none !important;
+}
+
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+} 
+body {
+    top: 0px !important; 
+}
