@@ -136,16 +136,13 @@
 	background-size: cover !important;
 	background-position: 0 !important;
 }
-.goog-te-menu-value {
-	display: none !important;
-}
 
 .goog-te-gadget-simple { 
 	background-color: transparent !important;
 	border: none !important;
 }
 
-.goog-te-banner-frame.skiptranslate {
+.goog-te-banner-frame.skiptranslate, .goog-te-menu-value, #goog-gt-tt {
     display: none !important;
 } 
 body {

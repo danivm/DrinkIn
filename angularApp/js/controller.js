@@ -5,6 +5,7 @@ angular.module('myControllers', ['myServices'])
 		$scope.queryName = '';
 		$scope.showFilters = false;
 
+
 		var temp = JSON.parse(localStorage.getItem($routeParams.id))
 
 		if(temp){
