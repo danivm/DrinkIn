@@ -74,23 +74,6 @@
 .table-menu {
 	margin-bottom: 100px;
 }
-
-/*.col1 {
-	width: 50%;
-	text-align: left;
-}
-.col2 {
-	width: 10%;
-	text-align: left;
-}
-.col3 {
-	width: 10%;
-	text-align: left;
-}
-.col4 {
-	width: 10%;
-	text-align: left;
-}*/
 .col0 {
 	width: 45px;
 	text-align: left;
@@ -127,24 +110,8 @@
 	height: 100%
 }
 
-#google_translate_element {
-	float: right;
-	padding: 15px;
-}
-.goog-te-gadget-icon{
-	background-image: url("/img/google_traductor.png") !important;
-	background-size: cover !important;
-	background-position: 0 !important;
-}
 
-.goog-te-gadget-simple { 
-	background-color: transparent !important;
-	border: none !important;
-}
 
-.goog-te-banner-frame.skiptranslate, .goog-te-menu-value, #goog-gt-tt {
-    display: none !important;
-} 
-body {
-    top: 0px !important; 
-}
+
+
+ 

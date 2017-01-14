@@ -83,6 +83,7 @@ angular.module('myControllers', ['myServices'])
 						status: 0,
 						creationDate: Date.now(),
 					};
+					console.log(newTicket)
 					mySocket.emit('add-ticket', newTicket);	
 				}
 			});
