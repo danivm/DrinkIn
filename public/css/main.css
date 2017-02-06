@@ -4,18 +4,27 @@
 	font-family: Lato;
 }
 
+#logo, #logo_o {
+	position: absolute;
+	height: 34px;
+}
+#logo_container {
+	width: 150px;
+	padding: 15px;
+}
+
 .list-group-item a { margin-left: 10px;}
 .jumbotron { margin-top: 30px;}
 .navbar {
 	margin: 0;
 }
 .drinkin-color {
-	color: #DDA828;
+	color: #b1b1b1;
 	transition: 0.5s;
 }
 
 .navbar-inverse {
-	background: #111;
+	background: #4a4c4c;
 	border-radius: 0;
 }
 
@@ -28,16 +37,8 @@
     color: white;
 }
 
-.navbar-inverse .navbar-header a:hover {
-    color: #DDA828;
-    transition: 0.5s;
-}
-.navbar-inverse .navbar-header a:hover .drinkin-color {
-    color: white;
-    transition: 0.5s;
-}
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
-    color: #DDA828;
+    color: #b1b1b1;
     background-color: black;
 	font-weight: 700;
 }
@@ -46,7 +47,7 @@
 }
 
 .btn-primary:hover, .btn-primary:active:hover, .btn-primary:focus {
-    background-color: #DDA828;
+    background-color: #b1b1b1;
     outline: none;
 }
 .login-container {
@@ -58,7 +59,7 @@
 	width: 100%
 }
 .bar-name {
-	background: #DDA828;
+	background: #b1b1b1;
 	margin-bottom: 20px;
 	height: 50px;
 }

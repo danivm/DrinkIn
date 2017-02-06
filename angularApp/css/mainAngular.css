@@ -1,3 +1,5 @@
+
+
 .animate-show {
   transition: all linear 0.5s;
 }
@@ -12,7 +14,7 @@
 	margin-bottom: 50px;
 }
 .dish-info h6 {
-	color: #DDA828;
+	color: #b1b1b1;
 	font-weight: 700;
     font-size: 16px;
 }
@@ -70,6 +72,7 @@
 .confirm-btn {
 	max-width:400px;
 	margin: 0 auto;
+	background: #4a4c4c;
 }
 .table-menu {
 	margin-bottom: 100px;
@@ -86,7 +89,7 @@
 	padding: 0;
 	height: 100%;
 	box-shadow: none;
-	color: #DDA828;
+	color: #b1b1b1;
 	font-weight: bold;
 }
 .align-right {
@@ -106,9 +109,7 @@
 .navbar-brand {
 	padding: 16px;
 }
-.navbar-brand img {
-	height: 100%
-}
+
 
 
 
